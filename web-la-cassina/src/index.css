@@ -1,1 +1,16 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700;800&display=swap');
+
+@theme {
+  /* Colores Principales del Manual de Marca */
+  --color-brand-navy: rgb(29, 25, 52); 
+  --color-brand-gold: rgb(236, 215, 152); 
+  
+  /* Tipografías del Manual de Marca */
+  --font-archivo: 'Archivo', sans-serif;
+  --font-copperplate: 'Copperplate Gothic Bold', 'Copperplate', serif;
+}
+
+body {
+  font-family: 'Archivo', sans-serif;
+}

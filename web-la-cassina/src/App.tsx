@@ -1,28 +1,23 @@
 // src/App.tsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import  { Navbar } from './components/layout/Navbar';
-import Home from './pages/Home';
+import { Navbar } from './components/layout/Navbar';
+import Hero from './components/sections/Hero';
+import Cabana from './pages/Cabana';
 
-function App() {
+export default function Home() {
   return (
-    <BrowserRouter>
-      {/* El Navbar va a estar fijo en todas las páginas */}
+    <main className="w-full bg-slate-50">
       <Navbar />
       
-      <main className="min-h-screen">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Rutas temporales hasta que armemos cada página */}
-          <Route path="/la-cabana" element={<div className="p-20 text-center text-2xl">La Cabaña</div>} />
-          <Route path="/ganaderia" element={<div className="p-20 text-center text-2xl">Ganadería y Agricultura</div>} />
-          <Route path="/reproductores" element={<div className="p-20 text-center text-2xl">Venta de Reproductores</div>} />
-          <Route path="/eventos" element={<div className="p-20 text-center text-2xl">Eventos</div>} />
-          <Route path="/noticias" element={<div className="p-20 text-center text-2xl">Noticias</div>} />
-          <Route path="/contacto" element={<div className="p-20 text-center text-2xl">Contacto</div>} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+      {/* 1. Portada con Carrusel */}
+      <Hero />
+      
+      {/* 2. Sección Historia y Magnitud */}
+      <Cabana />
+      
+      {/* Secciones restantes (relleno temporal para que el menú pueda hacer scroll) */}
+      <section id="remates" className="h-screen flex items-center justify-center bg-brand-navy text-brand-gold"><h2 className="text-4xl font-copperplate">Remates</h2></section>
+      <section id="genetica" className="h-screen flex items-center justify-center bg-slate-100 text-brand-navy"><h2 className="text-4xl font-copperplate">Genética</h2></section>
+      <section id="contacto" className="h-screen flex items-center justify-center bg-brand-navy text-white"><h2 className="text-4xl font-copperplate">Contacto</h2></section>
+    </main>
   );
 }
-
-export default App;

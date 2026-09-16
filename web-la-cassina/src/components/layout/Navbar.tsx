@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.tsx
 import { useState, useEffect } from 'react';
 
 const useActiveSection = (sectionIds: string[]) => {
@@ -59,26 +58,28 @@ export const Navbar = () => {
   };
 
   return (
-    // Acá cambiamos a bg-blue-900 (azul corporativo) en lugar de negro/gris
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 font-sans ${isScrolled ? 'bg-blue-900/95 backdrop-blur-md py-3 shadow-2xl border-b border-white/10' : 'bg-blue-900 py-5 shadow-lg'}`}>
+    // Aplicamos bg-brand-navy (el color oficial R:29 G:25 B:52)
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 font-archivo ${isScrolled ? 'bg-brand-navy/95 backdrop-blur-md py-3 shadow-2xl border-b border-white/10' : 'bg-brand-navy py-5 shadow-lg'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
+        {/* LOGOTIPO CON FUENTE COPPERPLATE OFICIAL */}
         <a href="#inicio" onClick={scrollToTop} className="flex flex-col items-start group relative z-50">
-          <span className={`text-[10px] md:text-xs font-semibold tracking-widest uppercase transition-colors duration-500 text-blue-200`}>Estancias y Cabaña</span>
-          <span className={`text-2xl md:text-3xl font-bold tracking-tight uppercase leading-none my-0.5 transition-colors duration-500 text-white`}>La Cassina</span>
-          <span className={`text-[10px] md:text-sm italic font-serif transition-colors duration-500 text-blue-300`}>Calidad de raza superior</span>
+          <span className={`text-[10px] md:text-xs font-semibold tracking-widest uppercase transition-colors duration-500 text-brand-gold`}>Estancias y Cabaña</span>
+          <span className={`text-2xl md:text-3xl font-copperplate tracking-tight uppercase leading-none my-0.5 transition-colors duration-500 text-white`}>La Cassina</span>
+          <span className={`text-[10px] md:text-sm italic font-serif transition-colors duration-500 text-brand-gold-dark`}>Calidad de raza superior</span>
         </a>
 
+        {/* LINKS DESKTOP EN FUENTE ARCHIVO */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className={`relative text-xs font-bold uppercase tracking-[0.15em] transition-colors duration-300 group py-2 ${activeSection === link.id ? 'text-blue-300' : 'text-white/80 hover:text-white'}`}>
+            <a key={link.name} href={link.href} className={`relative text-xs font-bold uppercase tracking-[0.15em] transition-colors duration-300 group py-2 ${activeSection === link.id ? 'text-brand-gold' : 'text-white/80 hover:text-white'}`}>
               {link.name}
-              <span className={`absolute bottom-0 left-0 h-[2px] bg-blue-300 transition-all duration-300 ease-out ${activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              <span className={`absolute bottom-0 left-0 h-[2px] bg-brand-gold transition-all duration-300 ease-out ${activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
             </a>
           ))}
-          <a href="#remates" className="ml-2 relative overflow-hidden bg-white/10 border border-blue-400 text-blue-100 hover:text-blue-900 px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all shadow-sm group">
+          <a href="#remates" className="ml-2 relative overflow-hidden border border-brand-gold text-brand-gold hover:text-brand-navy px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all shadow-sm group">
             <span className="relative z-10">Catálogo 2026</span>
-            <div className="absolute inset-0 bg-blue-100 w-0 group-hover:w-full transition-all duration-300 ease-out z-0" />
+            <div className="absolute inset-0 bg-brand-gold w-0 group-hover:w-full transition-all duration-300 ease-out z-0" />
           </a>
         </div>
 
@@ -91,10 +92,10 @@ export const Navbar = () => {
         </button>
       </div>
 
-      <div className={`absolute top-0 left-0 w-full h-screen bg-blue-950/95 backdrop-blur-xl border-t border-white/5 transition-all duration-500 overflow-hidden lg:hidden flex flex-col justify-center items-center ${isMobileMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}>
+      <div className={`absolute top-0 left-0 w-full h-screen bg-brand-navy/95 backdrop-blur-xl border-t border-white/5 transition-all duration-500 overflow-hidden lg:hidden flex flex-col justify-center items-center ${isMobileMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}>
         <div className="flex flex-col items-center gap-8 w-full px-6">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className={`text-2xl font-black uppercase tracking-widest transition-all duration-300 ${activeSection === link.id ? 'text-blue-300 scale-110' : 'text-white/80 hover:text-white hover:scale-105'}`}>
+            <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className={`text-2xl font-black uppercase tracking-widest transition-all duration-300 ${activeSection === link.id ? 'text-brand-gold scale-110' : 'text-white/80 hover:text-white hover:scale-105'}`}>
               {link.name}
             </a>
           ))}
