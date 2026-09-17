@@ -1,23 +1,26 @@
-// src/App.tsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
-import Hero from './components/sections/Hero';
-import Cabana from './pages/Cabana';
+import Home from './pages/Home';
 
-export default function Home() {
+function App() {
   return (
-    <main className="w-full bg-slate-50">
+    <BrowserRouter>
+      {/* El menú de navegación se mostrará fijo en todas las rutas */}
       <Navbar />
       
-      {/* 1. Portada con Carrusel */}
-      <Hero />
-      
-      {/* 2. Sección Historia y Magnitud */}
-      <Cabana />
-      
-      {/* Secciones restantes (relleno temporal para que el menú pueda hacer scroll) */}
-      <section id="remates" className="h-screen flex items-center justify-center bg-brand-navy text-brand-gold"><h2 className="text-4xl font-copperplate">Remates</h2></section>
-      <section id="genetica" className="h-screen flex items-center justify-center bg-slate-100 text-brand-navy"><h2 className="text-4xl font-copperplate">Genética</h2></section>
-      <section id="contacto" className="h-screen flex items-center justify-center bg-brand-navy text-white"><h2 className="text-4xl font-copperplate">Contacto</h2></section>
-    </main>
+      <main className="min-h-screen bg-slate-50 text-slate-900">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          
+          {/* Vistas de relleno temporales. Luego conectaremos los componentes reales. */}
+          <Route path="/la-cabana" element={<div className="flex items-center justify-center h-screen text-4xl font-copperplate">La Cabaña</div>} />
+          <Route path="/remates" element={<div className="flex items-center justify-center h-screen text-4xl font-copperplate">Remates</div>} />
+          <Route path="/genetica" element={<div className="flex items-center justify-center h-screen text-4xl font-copperplate">Genética</div>} />
+          <Route path="/contacto" element={<div className="flex items-center justify-center h-screen text-4xl font-copperplate">Contacto</div>} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
 }
+
+export default App;

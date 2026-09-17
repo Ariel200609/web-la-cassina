@@ -1,10 +1,11 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 @theme {
-  /* Colores Principales del Manual de Marca */
-  --color-brand-navy: rgb(29, 25, 52); 
-  --color-brand-gold: rgb(236, 215, 152); 
+  /* Colores extraídos del Manual y Piezas Gráficas */
+  --color-brand-navy: #1A1528; /* El fondo oscuro profundo del flyer */
+  --color-brand-gold: #C9AE71; /* El dorado institucional más preciso */
+  --color-brand-gold-light: #F4E8C1;
   
   /* Tipografías del Manual de Marca */
   --font-archivo: 'Archivo', sans-serif;
@@ -13,4 +14,6 @@
 
 body {
   font-family: 'Archivo', sans-serif;
+  background-color: var(--color-brand-navy); /* Fondo oscuro por defecto */
+  color: white;
 }
