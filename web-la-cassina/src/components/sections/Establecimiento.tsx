@@ -2,6 +2,9 @@
 import { motion } from 'framer-motion';
 import { Tractor, Leaf, ShieldCheck, Database, Award } from 'lucide-react';
 import videoDron from '../../assets/videos/dron.mp4';
+import Footer from '../layout/Footer';
+import establecimiento from '../../assets/images/establecimiento.png'; 
+import campo from '../../assets/images/campo.png'; 
 
 export default function Establecimiento() {
   return (
@@ -138,7 +141,7 @@ export default function Establecimiento() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                src="https://images.unsplash.com/photo-1596733430284-f7437764b1a9?q=80&w=800&auto=format&fit=crop" 
+                src= {establecimiento}
                 alt="Toro de La Cassina" 
                 className="rounded-xl w-full h-48 md:h-64 object-cover shadow-2xl"
               />
@@ -147,7 +150,7 @@ export default function Establecimiento() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=800&auto=format&fit=crop" 
+                src= {campo}   
                 alt="Ganadería en el campo" 
                 className="rounded-xl w-full h-48 md:h-64 object-cover shadow-2xl mt-8 md:mt-12"
               />
@@ -156,7 +159,7 @@ export default function Establecimiento() {
           </div>
         </div>
       </div>
-
+      <Footer />
     </main>
   );
 }
