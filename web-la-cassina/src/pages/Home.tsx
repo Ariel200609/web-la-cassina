@@ -1,7 +1,7 @@
 import { Navbar } from '../components/layout/Navbar';
 import Hero from '../components/sections/Hero';
 import Socios from '../components/sections/Socios';
-import Footer from '../components/layout/Footer'; // <-- Importamos el Footer
+import Footer from '../components/layout/Footer';
 
 export default function Home() {
   return (
@@ -12,6 +12,7 @@ export default function Home() {
 
       <main className="flex-1 w-full flex flex-col">
         <Socios />
+        
         {/* Aquí debajo irán futuras secciones de contenido */}
       </main>
 
