@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom'; // <-- Importamos Link para la navegación
 
 // Imágenes del Carrusel
 import toroHereford from '../../assets/images/TORO-HEREFORD.png';
@@ -72,9 +73,7 @@ export default function Hero() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // ==========================================
   // LÓGICA DE ARRASTRE TÁCTIL (Móviles)
-  // ==========================================
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     dragStartX.current = e.touches[0].clientX;
     dragDelta.current = 0;
@@ -97,9 +96,7 @@ export default function Hero() {
     startAutoplay();
   }, [isMobile, nextImage, prevImage, startAutoplay]);
 
-  // ==========================================
   // LÓGICA DE ARRASTRE MOUSE (Escritorio)
-  // ==========================================
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (dragStartX.current !== null) {
       dragDelta.current = e.clientX - dragStartX.current;
@@ -125,7 +122,7 @@ export default function Hero() {
     window.addEventListener('mouseup', handleMouseUp);
   }, [handleMouseMove, handleMouseUp]);
 
-  // Variantes de texto limpias sin TS errors
+  // Variantes de texto limpias
   const textVariants: Variants = {
     hidden: { x: -50, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
@@ -135,7 +132,7 @@ export default function Hero() {
   return (
     <section id="inicio" className="relative w-full h-screen flex flex-col font-archivo bg-[#1D1934]">
       
-      {/* 1. CARRUSEL FULL-SCREEN (Con Eventos Swipe Nativos) */}
+      {/* 1. CARRUSEL FULL-SCREEN */}
       <div 
         className="relative flex-1 w-full overflow-hidden bg-black touch-pan-y"
         onTouchStart={handleTouchStart}
@@ -179,7 +176,7 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* PUNTITOS INDICADORES (SOLO MÓVIL) */}
+        {/* PUNTITOS INDICADORES */}
         <div className="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-2 z-30 md:hidden">
           {slides.map((_, idx) => (
             <button
@@ -192,7 +189,7 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* FLECHAS DE NAVEGACIÓN A LOS COSTADOS (SOLO PC) */}
+        {/* FLECHAS DE NAVEGACIÓN */}
         <div className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-30">
           <button 
             onClick={(e) => { e.stopPropagation(); prevImage(); }} 
@@ -226,11 +223,11 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* 3. BANNERS DE ACCESO INFERIORES */}
+      {/* 3. BANNERS DE ACCESO INFERIORES (Con React Router Link) */}
       <div className="w-full bg-[#1D1934] relative z-20 flex-shrink-0">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
           
-          <a href="#programa-genetico" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
+          <Link to="/genetica" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
             <img src={animales2} alt="Programa Genético" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
             <div className="absolute inset-0 bg-[#1D1934]/80 group-hover:bg-[#1D1934]/40 transition-colors duration-500"></div>
             <div className="relative z-10 flex flex-col items-center px-4">
@@ -241,9 +238,9 @@ export default function Hero() {
                 Ver Información +
               </span>
             </div>
-          </a>
+          </Link>
 
-          <a href="#remates" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
+          <Link to="/remates" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
             <img src={bannerRemate} alt="Remates 2026" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
             <div className="absolute inset-0 bg-[#1D1934]/80 group-hover:bg-[#1D1934]/40 transition-colors duration-500"></div>
             <div className="relative z-10 flex flex-col items-center px-4">
@@ -254,9 +251,9 @@ export default function Hero() {
                 Ver Catálogos +
               </span>
             </div>
-          </a>
+          </Link>
 
-          <a href="#exposiciones" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group">
+          <Link to="/exposiciones" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group">
             <img src={bannerExpo} alt="Exposiciones 2026" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
             <div className="absolute inset-0 bg-[#1D1934]/80 group-hover:bg-[#1D1934]/40 transition-colors duration-500"></div>
             <div className="relative z-10 flex flex-col items-center px-4">
@@ -267,7 +264,7 @@ export default function Hero() {
                 Ver Calendario +
               </span>
             </div>
-          </a>
+          </Link>
 
         </div>
       </div>

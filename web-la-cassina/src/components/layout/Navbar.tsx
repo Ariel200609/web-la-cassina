@@ -35,10 +35,9 @@ export function Navbar() {
       title: "I. Estancias y Cabaña",
       id: "estancias",
       links: [
-        { name: "Historia", href: "/la-cabana" }, // <-- Ruta a la página independiente
+        { name: "Historia", href: "/la-cabana" }, // < -- Ruta a la página independiente
         { name: "Establecimiento", href: "/establecimiento" }, 
-        { name: "Socios estratégicos", href: "/#socios" }, 
-        { name: "Equipo", href: "/equipo" }
+        { name: "Equipo", href: "/equipo" },  // <-- Link corregido al equipo
       ]
     },
     {
