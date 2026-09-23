@@ -44,7 +44,7 @@ export function Navbar() {
       title: "II. Genética Productiva",
       id: "genetica",
       links: [
-        { name: "Programa Genético", href: "/#programa-genetico" }, 
+        { name: "Programa Genético", href: "/genetica" }, 
         { name: "Toros Padres campaña 2026", href: "/#toros-padres" }, 
         { name: "Indicadores", href: "/#indicadores" }
       ]

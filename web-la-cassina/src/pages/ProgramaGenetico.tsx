@@ -1,8 +1,9 @@
 // src/pages/ProgramaGenetico.tsx
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Dna, Activity, CheckCircle, ShieldCheck, TrendingDown, Target, Award, Users, LineChart, PlayCircle} from 'lucide-react';
+import { Dna, Activity, CheckCircle, ShieldCheck, TrendingDown, Target, Award, Users, LineChart} from 'lucide-react';
 import ScrollExpandMedia from '../components/ui/scroll-expansion-hero';
+import Footer from '../components/layout/Footer';
 
 // ASSETS
 import heroProgramaGenetico from '../assets/images/HeroProgramaGenetico.png';
@@ -172,6 +173,7 @@ export default function ProgramaGenetico() {
 
         </div>
       </ScrollExpandMedia>
+      <Footer />
     </div>
   );
 }
