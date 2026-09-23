@@ -49,10 +49,10 @@ export default function Footer() {
             Secciones
           </h4>
           <ul className="space-y-3 text-sm text-gray-300 font-medium">
-            <li><a href="#inicio" className="hover:text-[#ECD798] transition-colors">Inicio</a></li>
-            <li><a href="#la-cabana" className="hover:text-[#ECD798] transition-colors">La Cabaña</a></li>
+            <li><a href="/" className="hover:text-[#ECD798] transition-colors">Inicio</a></li>
+            <li><a href="la-cabana" className="hover:text-[#ECD798] transition-colors">La Cabaña</a></li>
             <li><a href="#remates" className="hover:text-[#ECD798] transition-colors">Remates 2026</a></li>
-            <li><a href="#genetica" className="hover:text-[#ECD798] transition-colors">Genética Productiva</a></li>
+            <li><a href="genetica" className="hover:text-[#ECD798] transition-colors">Genética Productiva</a></li>
           </ul>
         </div>
 

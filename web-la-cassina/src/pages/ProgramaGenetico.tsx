@@ -170,7 +170,6 @@ export default function ProgramaGenetico() {
               ))}
             </div>
           </section>
-
         </div>
       </ScrollExpandMedia>
       <Footer />
