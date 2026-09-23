@@ -3,38 +3,21 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Dna, Activity, CheckCircle, ShieldCheck, TrendingDown, Target, Award, Users, LineChart, PlayCircle} from 'lucide-react';
 import ScrollExpandMedia from '../components/ui/scroll-expansion-hero';
+
+// ASSETS
 import heroProgramaGenetico from '../assets/images/HeroProgramaGenetico.png';
 import animales2 from '../assets/images/programaGenetico.png';
 import equipo from '../assets/images/elEquipo.png';
 import dron from '../assets/videos/dron.mp4';
+import logoLaCassina from '../assets/images/logotiposinfondo.png'; // <--- IMPORTAMOS EL LOGO TRANSPARENTE
 
 export default function ProgramaGenetico() {
   const pasos = [
-    {
-      icon: <Target className="w-8 h-8 text-[#C9AE71]" />,
-      titulo: "1. Identificación de rasgos",
-      desc: "Selección de características deseables: producción de carne, fertilidad, adaptación al medio, habilidad materna y facilidad de parto."
-    },
-    {
-      icon: <Dna className="w-8 h-8 text-[#C9AE71]" />,
-      titulo: "2. Evaluación genética",
-      desc: "Uso de datos de selección genómica y registros exhaustivos para su evaluación genética de forma precisa y objetiva."
-    },
-    {
-      icon: <Activity className="w-8 h-8 text-[#C9AE71]" />,
-      titulo: "3. Selección y Reproducción",
-      desc: "Selección de los mejores animales para perpetuar sus características a través del apareamiento e inseminación artificial."
-    },
-    {
-      icon: <ShieldCheck className="w-8 h-8 text-[#C9AE71]" />,
-      titulo: "4. Evaluación sanitaria",
-      desc: "Programa de nutrición y sanidad riguroso. La genética necesita esa excelente compañía para funcionar de manera óptima."
-    },
-    {
-      icon: <TrendingDown className="w-8 h-8 text-[#C9AE71]" />,
-      titulo: "5. Presión en la selección",
-      desc: "Descarte estricto y riguroso de los animales inferiores o que no respondan a las exigencias de nuestro modelo."
-    }
+    { icon: <Target className="w-8 h-8 text-[#C9AE71]" />, titulo: "1. Identificación de rasgos", desc: "Selección de características deseables: producción de carne, fertilidad, adaptación al medio, habilidad materna y facilidad de parto." },
+    { icon: <Dna className="w-8 h-8 text-[#C9AE71]" />, titulo: "2. Evaluación genética", desc: "Uso de datos de selección genómica y registros exhaustivos para su evaluación genética de forma precisa y objetiva." },
+    { icon: <Activity className="w-8 h-8 text-[#C9AE71]" />, titulo: "3. Selección y Reproducción", desc: "Selección de los mejores animales para perpetuar sus características a través del apareamiento e inseminación artificial." },
+    { icon: <ShieldCheck className="w-8 h-8 text-[#C9AE71]" />, titulo: "4. Evaluación sanitaria", desc: "Programa de nutrición y sanidad riguroso. La genética necesita esa excelente compañía para funcionar de manera óptima." },
+    { icon: <TrendingDown className="w-8 h-8 text-[#C9AE71]" />, titulo: "5. Presión en la selección", desc: "Descarte estricto y riguroso de los animales inferiores o que no respondan a las exigencias de nuestro modelo." }
   ];
 
   const fadeUp = {
@@ -42,7 +25,6 @@ export default function ProgramaGenetico() {
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
   };
 
-  // Requisito del componente para resetear el scroll al entrar a la página
   useEffect(() => {
     window.scrollTo(0, 0);
     const resetEvent = new Event("resetSection");
@@ -52,23 +34,17 @@ export default function ProgramaGenetico() {
   return (
     <div className="w-full bg-slate-50 font-archivo">
       
-      {/* 1. HERO EXPANDIBLE */}
       <ScrollExpandMedia
         mediaType="image"
         mediaSrc={animales2}
         bgImageSrc={heroProgramaGenetico}
         title="Programa Genético"
-        date="La Cassina"
+        logoBottomSrc={logoLaCassina} // <--- PASAMOS EL LOGO ACÁ EN LUGAR DEL TEXTO "date"
         scrollToExpand="Deslizá para expandir"
       >
         
-        {/* ========================================================
-            ESTE CONTENIDO SE REVELA CUANDO EL USUARIO HACE SCROLL Y 
-            LA IMAGEN SE EXPANDE COMPLETAMENTE
-            ======================================================== */}
         <div className="w-full pb-0">
           
-          {/* VISIÓN PRODUCTIVA */}
           <div className="bg-white/5 py-12">
             <div className="max-w-4xl mx-auto px-4">
                <motion.div 
@@ -88,7 +64,6 @@ export default function ProgramaGenetico() {
             </div>
           </div>
 
-          {/* 2. PROCESO: TARJETAS INTERACTIVAS */}
           <section className="py-24 px-4 max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <h2 className="text-4xl md:text-5xl font-copperplate text-[#1A1528] uppercase">Nuestro Proceso</h2>
@@ -112,7 +87,6 @@ export default function ProgramaGenetico() {
             </div>
           </section>
 
-          {/* 3. EQUIPO Y LÍNEAS GENÉTICAS */}
           <section className="py-24 bg-[#1A1528] text-white relative overflow-hidden">
             <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#C9AE71] rounded-full blur-[150px] opacity-20"></div>
             <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full blur-[150px] opacity-10"></div>
@@ -147,31 +121,26 @@ export default function ProgramaGenetico() {
               
               <div className="relative">
                  <div className="absolute inset-0 bg-[#C9AE71] rounded-2xl transform translate-x-4 translate-y-4 opacity-50"></div>
-                 <img src= {equipo} alt="Equipo Genética La Cassina" className="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[600px]" />
+                 <img src={equipo} alt="Equipo Genética La Cassina" className="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[600px]" />
               </div>
             </div>
           </section>
 
-          {/* 4. MEDIA BREAK */}
-          <section className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center group cursor-pointer">
+          <section className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center group cursor-pointer bg-[#1A1528]">
             <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
               <video 
-                src= {dron}
+                src={dron}
                 autoPlay
                 muted
                 loop
-                className="w-full h-full object-cover"
+                playsInline
+                webkit-playsinline="true"
+                className="w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-[#1A1528]/40 group-hover:bg-[#1A1528]/20 transition-colors duration-500"></div>
             </div>
-            
-            <div className="relative z-10 text-center flex flex-col items-center">
-              <PlayCircle className="w-20 h-20 text-white/80 group-hover:text-[#C9AE71] transition-colors duration-500 drop-shadow-2xl mb-4" />
-              <h3 className="text-2xl md:text-4xl font-copperplate text-white drop-shadow-xl uppercase tracking-widest">Conocé nuestros planteles</h3>
-            </div>
           </section>
 
-          {/* 5. PERFIL GENÉTICO Y DEPs */}
           <section className="py-24 px-4 max-w-7xl mx-auto bg-slate-50">
             <div className="text-center mb-20">
               <h2 className="text-4xl md:text-5xl font-copperplate text-[#1A1528] uppercase">Perfil Genético</h2>
