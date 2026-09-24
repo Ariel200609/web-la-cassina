@@ -1,12 +1,15 @@
 // src/App.tsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/layout/Navbar';
+import  {Navbar}  from './components/layout/Navbar';
 import Home from './pages/Home';
 import Historia from './components/sections/Historia';
 import Establecimiento from './components/sections/Establecimiento';
 import Equipo from './components/sections/Equipo';
 import ProgramaGenetico from './pages/ProgramaGenetico'; // <-- Importamos la nueva página de Genética
 import Remates from './pages/Remates';
+import Exposiciones from './pages/Exposiciones';
+import Contacto from './pages/Contacto';
+
 
 function App() {
   return (
@@ -27,9 +30,8 @@ function App() {
           {/* Nuestra nueva página con el Programa Genético real */}
           <Route path="/genetica" element={<ProgramaGenetico />} />
           <Route path="/remates" element={<Remates />} />
-          
-          {/* Vistas en construcción temporales */}
-          <Route path="/contacto" element={<div className="flex flex-1 items-center justify-center h-[70vh] text-4xl font-copperplate">Contacto</div>} />
+          <Route path="/exposiciones" element={<Exposiciones />} />
+          <Route path="/contacto" element={<Contacto />} />
         </Routes>
       </div>
     </BrowserRouter>

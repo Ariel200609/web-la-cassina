@@ -54,17 +54,16 @@ export function Navbar() {
       title: "III. Remates y Expo",
       id: "remates",
       links: [
-        { name: "Calendario", href: "/#calendario" }, 
-        { name: "Catálogo de cada remate", href: "/#catalogo" }
+        { name: "Exposiciones", href: "/exposiciones" }, 
+        { name: "Remates", href: "/remates" },
+        { name: "Prensa", href: "/#prensa" }
       ]
     },
     {
-      title: "IV. Pasión productiva",
-      id: "pasion",
+      title: "Contacto",
+      id: "contacto",
       links: [
-        { name: "RRSS", href: "/#rrss" }, 
-        { name: "Reels", href: "/#reels" }, 
-        { name: "Prensa", href: "/#prensa" }
+        { name: "Contacto", href: "/contacto" }, 
       ]
     }
   ];

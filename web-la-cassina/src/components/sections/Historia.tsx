@@ -63,21 +63,18 @@ export default function Historia() {
     <main className="bg-[#F8F7F3] text-[#1D1934] font-archivo overflow-hidden flex flex-col min-h-screen">
       
       {/* =========================================================
-          HERO HISTORIA (Sin carteles, con Logo)
+          HERO HISTORIA
       ========================================================= */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Imagen de fondo */}
         <img
           src={campo}
           alt="Campo La Cassina"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        {/* Gradientes sutiles para asegurar lectura */}
         <div className="absolute inset-0 bg-[#1D1934]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#11101d] via-transparent to-transparent opacity-80" />
 
-        {/* Contenido centrado */}
         <div className="relative z-10 w-full text-center px-6 pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -85,11 +82,10 @@ export default function Historia() {
             transition={{ duration: 0.9 }}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            {/* Uso del Logo Principal */}
             <img 
               src={logo} 
               alt="Logo La Cassina" 
-              className="h-20 md:h-28 object-contain mb-8 drop-shadow-lg"
+              className="h-20 md:h-24 object-contain mb-8 drop-shadow-lg"
             />
 
             <span className="inline-flex items-center gap-3 text-[#ECD798] text-xs md:text-sm tracking-[0.35em] uppercase font-bold mb-6">
@@ -106,7 +102,7 @@ export default function Historia() {
       </section>
 
       {/* =========================================================
-          LÍNEA DE TIEMPO
+          LÍNEA DE TIEMPO INTERACTIVA
       ========================================================= */}
       <section className="bg-[#F8F7F3] py-24 md:py-32 overflow-hidden flex-1">
         <div className="max-w-7xl mx-auto px-6">
@@ -133,31 +129,34 @@ export default function Historia() {
             </div>
           </motion.div>
 
-          {/* Timeline Desktop (Grilla) */}
-          <div className="relative hidden md:block">
-            <div className="absolute left-0 right-0 top-[13px] h-px bg-[#1D1934]/15" />
+          {/* Timeline Desktop (Grilla con líneas unidas y hover) */}
+          <div className="hidden md:grid grid-cols-5 gap-y-20 gap-x-8 mt-12 relative">
+            {hitos.map((hito, index) => (
+              <motion.div
+                key={hito.year}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (index % 5) * 0.1 }}
+                className="relative pt-10 group cursor-pointer"
+              >
+                {/* Línea conectora (No se dibuja en el último ítem de la fila) */}
+                {(index + 1) % 5 !== 0 && index !== hitos.length - 1 && (
+                  <div className="absolute top-[13px] left-[17px] w-[calc(100%+2rem)] h-[2px] bg-[#1D1934]/15 group-hover:bg-[#ECD798] transition-colors duration-300 z-0" />
+                )}
 
-            <div className="grid grid-cols-5 gap-8">
-              {hitos.map((hito, index) => (
-                <motion.div
-                  key={hito.year}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="relative pt-10"
-                >
-                  <div className="absolute top-[5px] left-0 w-[17px] h-[17px] rounded-full bg-[#1D1934] border-4 border-[#F8F7F3] ring-1 ring-[#ECD798]" />
-                  <span className="block font-copperplate text-2xl text-[#1D1934] mb-2">{hito.year}</span>
-                  <h3 className="font-bold text-[#B69B4A] mb-2">{hito.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed pr-2">{hito.description}</p>
-                </motion.div>
-              ))}
-            </div>
+                {/* Puntito Interactivo */}
+                <div className="absolute top-[5px] left-0 w-[17px] h-[17px] rounded-full bg-[#1D1934] border-4 border-[#F8F7F3] ring-1 ring-[#ECD798] z-10 transition-all duration-300 group-hover:bg-[#ECD798] group-hover:scale-125 group-hover:shadow-[0_0_12px_rgba(236,215,152,0.8)]" />
+                
+                <span className="block font-copperplate text-2xl text-[#1D1934] mb-2 group-hover:text-[#B69B4A] transition-colors">{hito.year}</span>
+                <h3 className="font-bold text-[#B69B4A] mb-2">{hito.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed pr-2 group-hover:text-slate-700 transition-colors">{hito.description}</p>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Timeline Mobile (Lista Vertical) */}
-          <div className="relative block md:hidden mt-10 border-l border-[#1D1934]/15 pl-6 space-y-12">
+          {/* Timeline Mobile (Lista Vertical con hover) */}
+          <div className="relative block md:hidden mt-10 border-l-2 border-[#1D1934]/15 pl-6 space-y-12">
             {hitos.map((hito, index) => (
               <motion.div
                 key={hito.year}
@@ -165,10 +164,12 @@ export default function Historia() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
+                className="relative group cursor-pointer"
               >
-                <div className="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#1D1934] border-4 border-[#F8F7F3] ring-1 ring-[#ECD798]" />
-                <span className="block font-copperplate text-2xl text-[#1D1934] mb-1">{hito.year}</span>
+                {/* Puntito Interactivo Mobile */}
+                <div className="absolute -left-[33px] top-1 w-[17px] h-[17px] rounded-full bg-[#1D1934] border-4 border-[#F8F7F3] ring-1 ring-[#ECD798] transition-all duration-300 group-hover:bg-[#ECD798] group-hover:scale-125 group-hover:shadow-[0_0_12px_rgba(236,215,152,0.8)]" />
+                
+                <span className="block font-copperplate text-2xl text-[#1D1934] mb-1 group-hover:text-[#B69B4A] transition-colors">{hito.year}</span>
                 <h3 className="font-bold text-[#B69B4A] mb-2">{hito.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">{hito.description}</p>
               </motion.div>
@@ -179,24 +180,27 @@ export default function Historia() {
       </section>
 
       {/* =========================================================
-          CIERRE ANIVERSARIO (Uso del Logo de 25 años)
+          CIERRE ANIVERSARIO (Diseño compacto y elegante)
       ========================================================= */}
-      <section className="bg-[#1D1934] py-20 flex justify-center items-center relative overflow-hidden">
-        {/* Decoración de fondo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ECD798]/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="bg-[#1D1934] py-12 md:py-16 border-t-[3px] border-[#ECD798]/30 flex justify-center items-center relative overflow-hidden">
+        {/* Luz de fondo sutil */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#ECD798]/10 via-[#1D1934]/0 to-transparent pointer-events-none" />
         
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 text-center px-6"
+          className="relative z-10 w-full px-6 flex flex-col items-center"
         >
           <img 
             src={logoAniversario} 
             alt="25 Aniversario La Cassina" 
-            className="w-56 md:w-72 mx-auto object-contain drop-shadow-2xl"
+            className="w-48 md:w-56 object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
           />
+          <p className="text-[#ECD798] text-xs md:text-sm tracking-[0.3em] uppercase mt-6 font-light text-center">
+            Pasión por la Genética Productiva
+          </p>
         </motion.div>
       </section>
 
