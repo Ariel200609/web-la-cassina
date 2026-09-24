@@ -6,8 +6,7 @@ import {
   Download, 
   BadgePercent, 
   Truck, 
-  CreditCard, 
-  ChevronRight, 
+  CreditCard,
   PlayCircle,
   FileText
 } from 'lucide-react';
@@ -15,13 +14,14 @@ import {
 //layout
 import Footer from '../components/layout/Footer';
 
-
 //img
 import HeroRemate from '../assets/images/HeroDeRemates.png';
 import Colorado from '../assets/images/colorado.png';
 import hereford from '../assets/images/TORO-HEREFORD.png';
-import animales from '../assets/images/programaGenetico.png'
+import animales from '../assets/images/programaGenetico.png';
 
+// ATENCIÓN: Ya no hacemos "import" de los PDFs.
+// Usamos directamente la ruta "/catalogos/..." más abajo.
 
 export default function Remates() {
   // Reseteo de scroll al entrar
@@ -56,12 +56,13 @@ export default function Remates() {
     { nombre: "Cassina Fundamentalista Inca", rp: "X808", raza: "Polled Hereford", desc: "Apto para vaquillonas. Excepcional pureza racial y capacidad de engrasamiento.", img: hereford }
   ];
 
+  // Gira de Remates con las rutas DIRECTAS a la carpeta public
   const giraRemates = [
-    { ciudad: "Cañuelas", tipo: "Remate de Elite (MAG)", consignatario: "Pedro Noel Irey" },
-    { ciudad: "Trenque Lauquen", tipo: "Remate Anual", consignatario: "Colombo y Colombo" },
-    { ciudad: "Daireaux", tipo: "Remate Anual", consignatario: "Monasterio Tattersall" },
-    { ciudad: "9 de Julio", tipo: "Remate Especial", consignatario: "Consignataria Melicura" },
-    { ciudad: "Maipú", tipo: "Remate Anual", consignatario: "Colombo y Colombo" }
+    { ciudad: "Cañuelas", tipo: "Remate de Elite (MAG)", consignatario: "Pedro Noel Irey", pdf: "/catalogos/catalogo-canuelas.pdf" },
+    { ciudad: "9 de Julio", tipo: "Remate Especial", consignatario: "Consignataria Melicura", pdf: "/catalogos/catalogo-9dejulio.pdf" },
+    { ciudad: "Daireaux", tipo: "Remate Anual", consignatario: "Monasterio Tattersall", pdf: "/catalogos/catalogo-daireaux.pdf" },
+    { ciudad: "Maipú", tipo: "Remate Anual", consignatario: "Colombo y Colombo", pdf: "/catalogos/catalogo-maipu.pdf" },
+    { ciudad: "Trenque Lauquen", tipo: "Remate Anual", consignatario: "Colombo y Colombo", pdf: "/catalogos/catalogo-trenquelauquen.pdf" }
   ];
 
   return (
@@ -133,10 +134,16 @@ export default function Remates() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-[#C9AE71] hover:bg-[#E8D399] text-[#1A1528] font-bold uppercase tracking-widest py-4 px-8 rounded-lg transition-colors flex items-center justify-center gap-2 group">
+                <a 
+                  href="/catalogos/catalogo-daireaux.pdf" // Ruta directa al PDF del remate principal
+                  download="Catalogo_LaCassina_Remate_Invierno.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#C9AE71] hover:bg-[#E8D399] text-[#1A1528] font-bold uppercase tracking-widest py-4 px-8 rounded-lg transition-colors flex items-center justify-center gap-2 group"
+                >
                   <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
                   Descargar Catálogo
-                </button>
+                </a>
                 <button className="bg-transparent border border-white/30 hover:border-white text-white font-bold uppercase tracking-widest py-4 px-8 rounded-lg transition-colors flex items-center justify-center gap-2">
                   <PlayCircle className="w-5 h-5" />
                   Ver Streaming
@@ -232,7 +239,7 @@ export default function Remates() {
         </div>
       </section>
 
-      {/* 5. GIRA DE REMATES (LISTA MODERNA) */}
+      {/* 5. GIRA DE REMATES (LISTA MODERNA DE DESCARGAS) */}
       <section className="py-24 px-4 bg-slate-50 relative overflow-hidden">
         {/* Adorno de fondo */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#C9AE71]/10 skew-x-12 translate-x-1/2"></div>
@@ -241,20 +248,25 @@ export default function Remates() {
           <div className="mb-16">
             <h2 className="text-3xl md:text-5xl font-copperplate text-[#1A1528] uppercase">Gira de Remates</h2>
             <div className="w-24 h-1.5 bg-[#C9AE71] mt-6 rounded-full"></div>
+            <p className="mt-4 text-slate-500 font-medium">Seleccioná tu zona para descargar el catálogo interactivo.</p>
           </div>
 
           <div className="flex flex-col gap-4">
             {giraRemates.map((gira, idx) => (
-              <motion.div 
+              <motion.a 
                 key={idx}
+                href={gira.pdf}
+                download={`Catalogo_LaCassina_${gira.ciudad}.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#C9AE71] transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between group"
+                className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#C9AE71] transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between group cursor-pointer"
               >
                 <div className="flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-full bg-[#1A1528] text-[#C9AE71] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-full bg-[#1A1528] text-[#C9AE71] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#C9AE71] group-hover:text-[#1A1528] transition-all duration-300">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -263,18 +275,21 @@ export default function Remates() {
                   </div>
                 </div>
                 
-                <div className="mt-4 md:mt-0 md:text-right flex items-center md:justify-end gap-4">
-                  <div>
+                <div className="mt-4 md:mt-0 md:text-right flex items-center md:justify-end gap-6">
+                  <div className="hidden sm:block">
                     <p className="text-xs text-slate-400 uppercase tracking-widest font-bold">Consigna</p>
                     <p className="text-slate-700 font-semibold">{gira.consignatario}</p>
                   </div>
-                  <ChevronRight className="text-slate-300 group-hover:text-[#C9AE71] transition-colors" />
+                  <div className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center group-hover:bg-[#C9AE71] group-hover:border-[#C9AE71] transition-all duration-300">
+                    <Download className="text-slate-400 group-hover:text-[#1A1528] w-5 h-5 transition-colors" />
+                  </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
       </section>
+      
       <Footer />
     </main>
   );
