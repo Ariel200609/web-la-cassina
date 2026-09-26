@@ -10,6 +10,7 @@ import Remates from './pages/Remates';
 import Exposiciones from './pages/Exposiciones';
 import Contacto from './pages/Contacto';
 import Prensa from './components/sections/Prensa';
+import TorosPadres from './components/sections/TorosPadres';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           
           {/* Nuestra nueva página con el Programa Genético real */}
           <Route path="/genetica" element={<ProgramaGenetico />} />
+          <Route path="/toros-padres" element={<TorosPadres />} />
           <Route path="/remates" element={<Remates />} />
           <Route path="/exposiciones" element={<Exposiciones />} />
           <Route path="/contacto" element={<Contacto />} />

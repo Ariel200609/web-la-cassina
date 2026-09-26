@@ -46,7 +46,7 @@ export function Navbar() {
       id: "genetica",
       links: [
         { name: "Programa Genético", href: "/genetica" }, 
-        { name: "Toros Padres campaña 2026", href: "/#toros-padres" }, 
+        { name: "Toros Padres campaña 2026", href: "/toros-padres" }, 
         { name: "Indicadores", href: "/#indicadores" }
       ]
     },
