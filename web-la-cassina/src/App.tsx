@@ -9,7 +9,7 @@ import ProgramaGenetico from './pages/ProgramaGenetico'; // <-- Importamos la nu
 import Remates from './pages/Remates';
 import Exposiciones from './pages/Exposiciones';
 import Contacto from './pages/Contacto';
-
+import Prensa from './components/sections/Prensa';
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
           <Route path="/la-cabana" element={<Historia />} />
           <Route path="/establecimiento" element={<Establecimiento />} />
           <Route path="/equipo" element={<Equipo />} />
+          <Route path="/Prensa" element={<Prensa />} />
           
           {/* Nuestra nueva página con el Programa Genético real */}
           <Route path="/genetica" element={<ProgramaGenetico />} />

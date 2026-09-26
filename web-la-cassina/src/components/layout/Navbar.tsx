@@ -56,7 +56,7 @@ export function Navbar() {
       links: [
         { name: "Exposiciones", href: "/exposiciones" }, 
         { name: "Remates", href: "/remates" },
-        { name: "Prensa", href: "/#prensa" }
+        { name: "Prensa", href: "/prensa" }
       ]
     },
     {
