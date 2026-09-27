@@ -86,13 +86,13 @@ export default function Footer() {
             Seguinos en nuestras redes para ver el día a día en el campo y novedades de remates.
           </p>
           <div className="flex gap-4">
-            <a href="#" aria-label="Instagram" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
+            <a href="https://instagram.com/lacassina" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
+            <a href="https://www.facebook.com/lacassina" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="#" aria-label="YouTube" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
+            <a href="https://www.youtube.com/@estancialacassina" target="_blank" rel="noreferrer" aria-label="YouTube" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
               <Youtube className="w-5 h-5" />
             </a>
           </div>
