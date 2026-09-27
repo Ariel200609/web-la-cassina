@@ -2,7 +2,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
-
+import WhatsAppButton from './components/ui/WhatsAppButton';
 // Importaciones diferidas (Lazy Loading) para optimizar la velocidad
 const Home = lazy(() => import('./pages/Home'));
 const Historia = lazy(() => import('./components/sections/Historia'));
@@ -20,6 +20,8 @@ function App() {
     <BrowserRouter>
       {/* El Navbar carga de inmediato, sin diferir */}
       <Navbar />
+
+      <WhatsAppButton />
 
       {/* Contenedor principal flexible para empujar el footer hacia abajo */}
       <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col w-full">
