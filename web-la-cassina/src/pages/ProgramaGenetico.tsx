@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Dna, Activity, CheckCircle, ShieldCheck, TrendingDown, Target, Award, Users, LineChart} from 'lucide-react';
 import ScrollExpandMedia from '../components/ui/scroll-expansion-hero';
 import Footer from '../components/layout/Footer';
+import { Helmet } from 'react-helmet-async';
 
 // ASSETS
 import heroProgramaGenetico from '../assets/images/HeroProgramaGenetico.png';
@@ -34,7 +35,17 @@ export default function ProgramaGenetico() {
 
   return (
     <div className="w-full bg-slate-50 font-archivo">
-      
+      <Helmet>
+        <title>Programa Genético Angus | La Cassina</title>
+        <meta name="description" content="Programa genético integral de La Cassina Angus. Selección rigurosa de Angus, Hereford y sintéticas con foco en facilidad de parto, fertilidad y calidad de carne."/>
+        <meta name="keywords" content="Programa Genético, La Cassina, Angus, Hereford, Braford, Brangus, Genética Bovina, Facilidad de Parto, Embriones Angus, Cabaña Angus"/>
+        <meta name="author" content="La Cassina Angus"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://www.lacassina.com/programa-genetico"/>
+        <meta property="og:title" content="Programa Genético Angus | La Cassina"/>
+        <meta property="og:description" content="Excelencia en genética Angus. Criadores de campeones argentinos desde 1960."/>
+        <meta property="og:image" content="/images/logo.png"/>
+      </Helmet>
       <ScrollExpandMedia
         mediaType="image"
         mediaSrc={animales2}

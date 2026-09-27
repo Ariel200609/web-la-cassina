@@ -1,10 +1,22 @@
 // src/components/sections/Cabana.tsx
 import { motion } from 'framer-motion';
 import { MapPin, Tractor, ShieldCheck, Award } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function Cabana() {
   return (
     <section id="la-cabana" className="py-24 bg-slate-50 relative overflow-hidden font-archivo">
+      <Helmet>
+        <title>La Cabaña Angus y Hereford | La Cassina</title>
+        <meta name="description" content="La Cabaña La Cassina: Tradición y excelencia en genética Angus, Hereford, Brangus y Braford. Criadores de campeones argentinos desde 1960."/>
+        <meta name="keywords" content="La Cabaña, La Cassina, Angus, Hereford, Brangus, Braford, Ganadería, Genética Bovina, Cabaña Angus, Cabaña Hereford"/>
+        <meta name="author" content="La Cassina"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://www.lacassina.com/cabana"/>
+        <meta property="og:title" content="La Cabaña Angus y Hereford | La Cassina"/>
+        <meta property="og:description" content="Excelencia en genética Angus, Hereford, Brangus y Braford. Criadores de campeones argentinos desde 1960."/>
+        <meta property="og:image" content="/images/logo.png"/>
+      </Helmet>
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         
         {/* Encabezado de la sección */}

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { 
   Calendar, 
   MapPin, 
@@ -67,6 +68,18 @@ export default function Remates() {
 
   return (
     <main className="w-full bg-[#1A1528] font-archivo selection:bg-[#C9AE71] selection:text-[#1A1528] overflow-hidden">
+      {/* 1. SEO Tags para Remates */}
+      <Helmet>
+        <title>Remates Angus y Hereford | La Cassina</title>
+        <meta name="description" content="Próximos remates Angus y Hereford en Cañuelas, 9 de Julio, Daireaux y más. Descubre los mejores reproductores y genética de La Cassina." />
+        <meta name="keywords" content="Remate Angus, Remate Hereford, Cabaña La Cassina, Venta de toros, Genética Angus, Catalogos" />
+        <meta name="author" content="La Cassina Angus" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.lacassina.com/remates" />
+        <meta property="og:title" content="Remates Angus y Hereford | La Cassina" />
+        <meta property="og:description" content="Próximos remates Angus y Hereford en Cañuelas, 9 de Julio, Daireaux y más." />
+        <meta property="og:image" content="/images/logo.png" />
+      </Helmet>
       
       {/* 1. HERO SPECTACULAR */}
       <section className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center">

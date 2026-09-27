@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom'; // <-- Importamos Link para la navegación
+import { Helmet } from 'react-helmet-async';
 
 // Imágenes del Carrusel
 import toroHereford from '../../assets/images/TORO-HEREFORD.png';
@@ -131,7 +132,18 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="relative w-full h-screen flex flex-col font-archivo bg-[#1D1934]">
-      
+      {/* 1. SEO Tags para Home */}
+      <Helmet>
+        <title>La Cassina | Liderazgo en Genética Bovina</title>
+        <meta name="description" content="La Cassina Angus: Tradición y excelencia en genética bovina. Criadores de campeones argentinos y líderes en el mercado de embriones y semen." />
+        <meta name="keywords" content="La Cassina, Angus, Cabaña Angus, Cabaña La Cassina, Ganadería, Genética Bovina, Embriones Angus, Toros Angus" />
+        <meta name="author" content="La Cassina Angus" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.lacassina.com" />
+        <meta property="og:title" content="La Cassina | Liderazgo en Genética Bovina" />
+        <meta property="og:description" content="Excelencia en genética Angus, Hereford, Brangus y Braford. Criadores de campeones argentinos desde 1960." />
+        <meta property="og:image" content="/images/logo.png" />
+      </Helmet>
       {/* 1. CARRUSEL FULL-SCREEN */}
       <div 
         className="relative flex-1 w-full overflow-hidden bg-black touch-pan-y"

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Trophy, Star } from 'lucide-react';
 import Footer from '../components/layout/Footer';
+import { Helmet } from 'react-helmet-async';
 
 import imgbanner from  "../assets/images/bannerexposicion.png"
 
@@ -65,7 +66,18 @@ export default function Exposiciones() {
 
   return (
     <main className="w-full bg-[#1A1528] font-archivo selection:bg-[#C9AE71] selection:text-[#1A1528] overflow-hidden flex flex-col min-h-screen">
-      
+      {/* 1. SEO Tags para Exposiciones */}
+      <Helmet>
+        <title>Exposiciones Angus y Hereford | La Cassina</title>
+        <meta name="description" content="Agenda 2026 de exposiciones Angus y Hereford: Huinca Renancó, Gualeguaychú, Curuzú Cuatiá, Bahía Blanca y más. Participa en los eventos de La Cassina."/>
+        <meta name="keywords" content="Exposiciones Angus, La Cassina, Angus, Hereford, Expo Rural, Ganadería, Agenda Ganadera"/>
+        <meta name="author" content="La Cassina"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://www.lacassina.com/exposiciones"/>
+        <meta property="og:title" content="Exposiciones Angus y Hereford | La Cassina"/>
+        <meta property="og:description" content="Agenda 2026 de exposiciones Angus y Hereford: Huinca Renancó, Gualeguaychú, Curuzú Cuatiá, Bahía Blanca y más."/>
+        <meta property="og:image" content="/images/logo.png"/>
+      </Helmet>
       {/* 1. HERO DE EXPOSICIONES */}
       <section className="relative h-[70vh] min-h-[500px] w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0">
