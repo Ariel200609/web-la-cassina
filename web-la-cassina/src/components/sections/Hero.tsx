@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom'; // <-- Importamos Link para la navegación
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // Imágenes del Carrusel
@@ -12,33 +12,49 @@ import animales from '../../assets/images/animales.png';
 import bannerRemate from '../../assets/images/bannerRemate.png';
 import bannerExpo from '../../assets/images/bannerExpo.png';
 import animales2 from '../../assets/images/animales.png';
+// Importa el flyer nuevo aquí (asegúrate de tener el archivo en la carpeta)
+import flyerCachari from '../../assets/images/animales.png';
 
 export default function Hero() {
+  // 1. Array de 4 Banners Rotativos con sus respectivos links internos
   const slides = [
     {
       id: 1,
-      image: toroHereford,
-      title: "CUATRO RAZAS",
-      subtitle: "Producimos Angus, Polled Hereford, Braford y Brangus."
+      image: flyerCachari, 
+      title: "PRÓXIMO REMATE",
+      subtitle: "Acompañanos en nuestro próximo remate en Cacharí. Conocé las condiciones y la oferta genética.",
+      link: "/remates",
+      buttonText: "Ver Remate"
     },
     {
       id: 2,
       image: animales,
       title: "CALIDAD GENÉTICA",
-      subtitle: "Más de 20 años de mejoramiento incesante en nuestros planteles."
+      subtitle: "25 años de progreso genético continuo, maximizando el rendimiento productivo, sobre información precisa y confiable.",
+      link: "/genetica",
+      buttonText: "Programa Genético"
     },
     {
       id: 3,
       image: cabana,
-      title: "LA CABAÑA",
-      subtitle: "Con una superficie en explotación de 10.000 hectáreas, destinadas a la ganadería de cría y de invernada."
+      title: "ESTANCIAS Y CABAÑA LA CASSINA",
+      subtitle: "Más de ocho mil hectáreas de producción agrícola, basada en las mejores prácticas para cuidar el suelo, y ganadera de altísima calidad, cuya piedra angular es nuestro programa genético.",
+      link: "/establecimiento",
+      buttonText: "El Establecimiento"
+    },
+    {
+      id: 4,
+      image: toroHereford,
+      title: "CUATRO RAZAS",
+      subtitle: "Producimos Angus, Hereford, Brangus y Braford, en las categorías Puro de Pedigree, Puro Controlados, Registrados y Categoría C.",
+      link: "/genetica",
+      buttonText: "Ver Razas"
     }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   
-  // Refs para la lógica nativa de arrastre (Swipe)
   const timeoutRef = useRef<number | null>(null);
   const dragStartX = useRef<number | null>(null);
   const dragDelta = useRef<number>(0);
@@ -51,7 +67,6 @@ export default function Hero() {
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
-  // Autoplay
   const startAutoplay = useCallback(() => {
     if (timeoutRef.current !== null) clearInterval(timeoutRef.current);
     timeoutRef.current = window.setInterval(() => {
@@ -66,7 +81,6 @@ export default function Hero() {
     };
   }, [startAutoplay, currentIndex]);
 
-  // Detección de celular para ajustar la sensibilidad del arrastre
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
@@ -74,7 +88,6 @@ export default function Hero() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // LÓGICA DE ARRASTRE TÁCTIL (Móviles)
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     dragStartX.current = e.touches[0].clientX;
     dragDelta.current = 0;
@@ -97,7 +110,6 @@ export default function Hero() {
     startAutoplay();
   }, [isMobile, nextImage, prevImage, startAutoplay]);
 
-  // LÓGICA DE ARRASTRE MOUSE (Escritorio)
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (dragStartX.current !== null) {
       dragDelta.current = e.clientX - dragStartX.current;
@@ -123,7 +135,6 @@ export default function Hero() {
     window.addEventListener('mouseup', handleMouseUp);
   }, [handleMouseMove, handleMouseUp]);
 
-  // Variantes de texto limpias
   const textVariants: Variants = {
     hidden: { x: -50, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
@@ -132,7 +143,6 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="relative w-full h-screen flex flex-col font-archivo bg-[#1D1934]">
-      {/* 1. SEO Tags para Home */}
       <Helmet>
         <title>La Cassina | Liderazgo en Genética Bovina</title>
         <meta name="description" content="La Cassina Angus: Tradición y excelencia en genética bovina. Criadores de campeones argentinos y líderes en el mercado de embriones y semen." />
@@ -144,7 +154,8 @@ export default function Hero() {
         <meta property="og:description" content="Excelencia en genética Angus, Hereford, Brangus y Braford. Criadores de campeones argentinos desde 1960." />
         <meta property="og:image" content="/images/logo.png" />
       </Helmet>
-      {/* 1. CARRUSEL FULL-SCREEN */}
+
+      {/* CARRUSEL FULL-SCREEN */}
       <div 
         className="relative flex-1 w-full overflow-hidden bg-black touch-pan-y"
         onTouchStart={handleTouchStart}
@@ -166,7 +177,7 @@ export default function Hero() {
               transition={{ duration: 0.8 }}
             />
             
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1D1934]/90 via-[#1D1934]/50 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1D1934]/90 via-[#1D1934]/60 to-transparent pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1D1934]/60 via-transparent to-transparent pointer-events-none" />
 
             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-20 max-w-7xl mx-auto pt-20 pointer-events-none">
@@ -183,6 +194,21 @@ export default function Hero() {
               >
                 {slides[currentIndex].subtitle}
               </motion.p>
+
+              {/* Botón de enlace hacia las páginas internas */}
+              {slides[currentIndex].link && (
+                <motion.div 
+                  initial="hidden" animate="visible" exit="exit" variants={textVariants}
+                  className="mt-8 pointer-events-auto"
+                >
+                  <Link 
+                    to={slides[currentIndex].link} 
+                    className="inline-block px-8 py-3 bg-[#ECD798] text-[#1D1934] font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300"
+                  >
+                    {slides[currentIndex].buttonText}
+                  </Link>
+                </motion.div>
+              )}
             </div>
 
           </motion.div>
@@ -220,7 +246,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 2. FRANJA DORADA CURVA SEPARADORA */}
+      {/* FRANJA DORADA CURVA SEPARADORA */}
       <div className="relative z-30 w-full h-8 md:h-12 -mt-8 md:-mt-12 pointer-events-none drop-shadow-[0_-5px_10px_rgba(0,0,0,0.5)]">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
           <defs>
@@ -235,7 +261,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* 3. BANNERS DE ACCESO INFERIORES (Con React Router Link) */}
+      {/* BANNERS DE ACCESO INFERIORES */}
       <div className="w-full bg-[#1D1934] relative z-20 flex-shrink-0">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
           

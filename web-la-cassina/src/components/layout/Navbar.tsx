@@ -35,7 +35,6 @@ export function Navbar() {
       title: "I. Estancias y Cabaña",
       id: "estancias",
       links: [
-        { name: "Inicio",href: "/"},
         { name: "Historia", href: "/la-cabana" }, // < -- Ruta a la página independiente
         { name: "Establecimiento", href: "/establecimiento" }, 
         { name: "Equipo", href: "/equipo" },  // <-- Link corregido al equipo
@@ -54,8 +53,14 @@ export function Navbar() {
       title: "III. Remates y Expo",
       id: "remates",
       links: [
-        { name: "Exposiciones", href: "/exposiciones" }, 
-        { name: "Remates", href: "/remates" },
+        { name: "Remates", href: "/remates" }, 
+        { name: "Exposiciones", href: "/exposiciones" }
+      ]
+    },
+    {
+      title: "IV. Prensa",
+      id: "prensa",
+      links: [
         { name: "Prensa", href: "/prensa" }
       ]
     },

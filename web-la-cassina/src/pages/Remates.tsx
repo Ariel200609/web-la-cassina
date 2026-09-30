@@ -21,9 +21,6 @@ import Colorado from '../assets/images/colorado.png';
 import hereford from '../assets/images/TORO-HEREFORD.png';
 import animales from '../assets/images/programaGenetico.png';
 
-// ATENCIÓN: Ya no hacemos "import" de los PDFs.
-// Usamos directamente la ruta "/catalogos/..." más abajo.
-
 export default function Remates() {
   // Reseteo de scroll al entrar
   useEffect(() => {
@@ -43,10 +40,10 @@ export default function Remates() {
     }
   };
 
-  // Datos extraídos del catálogo
+  // 1. CONDICIONES COMERCIALES ACTUALIZADAS
   const condicionesComerciales = [
-    { icon: <BadgePercent/>, titulo: "9% Descuento", desc: "Por pago en efectivo" },
-    { icon: <CreditCard/>, titulo: "90 Días Libres", desc: "O 5 cuotas sin interés (Índice MAG)" },
+    { icon: <CreditCard/>, titulo: "90 Días Libres", desc: "+ 90 días al 3% de interés mensual" },
+    { icon: <BadgePercent/>, titulo: "5 Cuotas", desc: "Con índice MAG al 31/01/27 ó 31/03/27" },
     { icon: <Truck/>, titulo: "Flete Gratis", desc: "Para toros hasta 500 km" },
     { icon: <FileText/>, titulo: "Financiación", desc: "Tarjetas Macro Agro, Banco Provincia, Galicia" }
   ];
@@ -57,31 +54,32 @@ export default function Remates() {
     { nombre: "Cassina Fundamentalista Inca", rp: "X808", raza: "Polled Hereford", desc: "Apto para vaquillonas. Excepcional pureza racial y capacidad de engrasamiento.", img: hereford }
   ];
 
-  // Gira de Remates con las rutas DIRECTAS a la carpeta public
+  // 2. GIRA DE REMATES CON HASENKAMP AGREGADO
   const giraRemates = [
     { ciudad: "Cañuelas", tipo: "Remate de Elite (MAG)", consignatario: "Pedro Noel Irey", pdf: "/catalogos/catalogo-canuelas.pdf" },
     { ciudad: "9 de Julio", tipo: "Remate Especial", consignatario: "Consignataria Melicura", pdf: "/catalogos/catalogo-9dejulio.pdf" },
     { ciudad: "Daireaux", tipo: "Remate Anual", consignatario: "Monasterio Tattersall", pdf: "/catalogos/catalogo-daireaux.pdf" },
     { ciudad: "Maipú", tipo: "Remate Anual", consignatario: "Colombo y Colombo", pdf: "/catalogos/catalogo-maipu.pdf" },
-    { ciudad: "Trenque Lauquen", tipo: "Remate Anual", consignatario: "Colombo y Colombo", pdf: "/catalogos/catalogo-trenquelauquen.pdf" }
+    { ciudad: "Trenque Lauquen", tipo: "Remate Anual", consignatario: "Colombo y Colombo", pdf: "/catalogos/catalogo-trenquelauquen.pdf" },
+    { ciudad: "Hasenkamp", tipo: "Remate", consignatario: "Consignataria", pdf: "/catalogos/catalogo-hasenkamp.pdf" }
   ];
 
   return (
     <main className="w-full bg-[#1A1528] font-archivo selection:bg-[#C9AE71] selection:text-[#1A1528] overflow-hidden">
-      {/* 1. SEO Tags para Remates */}
+      
       <Helmet>
         <title>Remates Angus y Hereford | La Cassina</title>
-        <meta name="description" content="Próximos remates Angus y Hereford en Cañuelas, 9 de Julio, Daireaux y más. Descubre los mejores reproductores y genética de La Cassina." />
-        <meta name="keywords" content="Remate Angus, Remate Hereford, Cabaña La Cassina, Venta de toros, Genética Angus, Catalogos" />
+        <meta name="description" content="Próximos remates Angus y Hereford en Cacharí, Cañuelas, 9 de Julio, Daireaux y más. Descubre los mejores reproductores y genética de La Cassina." />
+        <meta name="keywords" content="Remate Angus, Remate Hereford, Remate Cacharí, Cabaña La Cassina, Venta de toros, Genética Angus, Catalogos" />
         <meta name="author" content="La Cassina Angus" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.lacassina.com/remates" />
         <meta property="og:title" content="Remates Angus y Hereford | La Cassina" />
-        <meta property="og:description" content="Próximos remates Angus y Hereford en Cañuelas, 9 de Julio, Daireaux y más." />
+        <meta property="og:description" content="Próximos remates Angus y Hereford en Cacharí, Cañuelas, 9 de Julio, Daireaux y más." />
         <meta property="og:image" content="/images/logo.png" />
       </Helmet>
       
-      {/* 1. HERO SPECTACULAR */}
+      {/* HERO SPECTACULAR */}
       <section className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
@@ -107,7 +105,7 @@ export default function Remates() {
         </motion.div>
       </section>
 
-      {/* 2. EL REMATE PRINCIPAL (ESTILO GLASSMORPHISM) */}
+      {/* EL REMATE PRINCIPAL (ESTILO GLASSMORPHISM) */}
       <section className="relative z-20 -mt-32 px-4 pb-24">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -120,8 +118,10 @@ export default function Remates() {
             {/* Info del Remate */}
             <div className="w-full lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
               <span className="text-[#C9AE71] font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Evento Destacado</span>
+              
+              {/* 3. EVENTO DESTACADO ACTUALIZADO A CACHARÍ */}
               <h2 className="text-4xl md:text-5xl font-copperplate text-white uppercase mb-6 leading-tight">
-                11º Remate <br/> de Invierno
+                Remate <br/> Cacharí
               </h2>
               
               <div className="space-y-6 mb-10">
@@ -130,7 +130,7 @@ export default function Remates() {
                     <Calendar className="text-[#C9AE71] w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-lg">Jueves 16 de Julio | 14:00 hs</p>
+                    <p className="text-white font-bold text-lg">Próximamente</p>
                     <p className="text-sm">Previo Almuerzo - Cabañas Invitadas</p>
                   </div>
                 </div>
@@ -140,16 +140,16 @@ export default function Remates() {
                     <MapPin className="text-[#C9AE71] w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-lg">Bonifacio, PBA</p>
-                    <p className="text-sm">La Cabaña, Ruta 65, km 403 (Transmite Clic Rural)</p>
+                    <p className="text-white font-bold text-lg">Cacharí, PBA</p>
+                    <p className="text-sm">Predio Ferial (Transmite Clic Rural)</p>
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="/catalogos/catalogo-daireaux.pdf" // Ruta directa al PDF del remate principal
-                  download="Catalogo_LaCassina_Remate_Invierno.pdf"
+                  href="/catalogos/catalogo-cachari.pdf" 
+                  download="Catalogo_LaCassina_Remate_Cachari.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#C9AE71] hover:bg-[#E8D399] text-[#1A1528] font-bold uppercase tracking-widest py-4 px-8 rounded-lg transition-colors flex items-center justify-center gap-2 group"
@@ -168,10 +168,9 @@ export default function Remates() {
             <div className="w-full lg:w-1/2 relative min-h-[400px]">
               <img 
                 src={animales} 
-                alt="Remate Bonifacio" 
+                alt="Remate Cacharí" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              {/* Overlay gradiente para que no corte abrupto */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#1A1528]/80 lg:from-[#1A1528] via-transparent to-transparent"></div>
               
               <div className="absolute bottom-6 right-6 bg-[#1A1528]/80 backdrop-blur-sm p-4 rounded-xl border border-white/10">
@@ -183,7 +182,7 @@ export default function Remates() {
         </div>
       </section>
 
-      {/* 3. CONDICIONES COMERCIALES */}
+      {/* CONDICIONES COMERCIALES */}
       <section className="py-12 border-y border-white/5 bg-white/5">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div 
@@ -206,14 +205,16 @@ export default function Remates() {
         </div>
       </section>
 
-      {/* 4. ADELANTO DEL CATÁLOGO (TARJETAS INTERACTIVAS) */}
+      {/* ADELANTO DEL CATÁLOGO (TARJETAS INTERACTIVAS) */}
       <section className="py-24 px-4 bg-[#1A1528]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-copperplate text-white uppercase">Adelanto del Catálogo</h2>
             <div className="w-24 h-1.5 bg-[#C9AE71] mx-auto mt-6 rounded-full"></div>
+            
+            {/* 4. FRASE DE TOROS PADRES ACTUALIZADA */}
             <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
-              Conocé algunos de los Toros Padres de Pedigree que encabezan nuestras ventas.
+              Conocé los Toros Padres de Pedigree de los reproductores que encabezan el remate.
             </p>
           </div>
 
@@ -229,10 +230,8 @@ export default function Remates() {
               >
                 <img src={toro.img} alt={toro.nombre} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 
-                {/* Degradado oscuro base */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A1528] via-[#1A1528]/40 to-transparent"></div>
                 
-                {/* Overlay que se revela al hover */}
                 <div className="absolute inset-0 bg-[#C9AE71]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm flex flex-col items-center justify-center p-8 text-center">
                   <h4 className="text-[#1A1528] font-copperplate text-2xl mb-4">{toro.nombre}</h4>
                   <p className="text-[#1A1528]/80 font-medium mb-6">{toro.desc}</p>
@@ -241,7 +240,6 @@ export default function Remates() {
                   </span>
                 </div>
 
-                {/* Info base visible */}
                 <div className="absolute bottom-0 left-0 w-full p-8 transition-transform duration-500 group-hover:translate-y-full">
                   <span className="text-[#C9AE71] text-xs font-bold tracking-widest uppercase mb-2 block">{toro.raza}</span>
                   <h3 className="text-2xl font-bold text-white leading-tight">{toro.nombre}</h3>
@@ -252,9 +250,8 @@ export default function Remates() {
         </div>
       </section>
 
-      {/* 5. GIRA DE REMATES (LISTA MODERNA DE DESCARGAS) */}
+      {/* GIRA DE REMATES (LISTA MODERNA DE DESCARGAS) */}
       <section className="py-24 px-4 bg-slate-50 relative overflow-hidden">
-        {/* Adorno de fondo */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#C9AE71]/10 skew-x-12 translate-x-1/2"></div>
 
         <div className="max-w-5xl mx-auto relative z-10">

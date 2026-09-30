@@ -79,12 +79,6 @@ export default function Footer() {
 
         {/* COLUMNA 4: Redes Sociales */}
         <div>
-          <h4 className="text-[#ECD798] font-copperplate uppercase tracking-widest text-sm mb-6">
-            Pasión Productiva
-          </h4>
-          <p className="text-sm text-gray-400 font-light mb-6">
-            Seguinos en nuestras redes para ver el día a día en el campo y novedades de remates.
-          </p>
           <div className="flex gap-4">
             <a href="https://instagram.com/lacassina" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:bg-[#ECD798] hover:text-[#1D1934] transition-all hover:scale-110 shadow-sm">
               <Instagram className="w-5 h-5" />

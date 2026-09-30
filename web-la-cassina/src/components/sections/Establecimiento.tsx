@@ -64,7 +64,7 @@ export default function Establecimiento() {
             <div className="flex items-start gap-3 bg-green-50/50 p-4 rounded-lg border border-green-100">
               <Leaf className="text-green-600 w-6 h-6 shrink-0 mt-0.5" />
               <p className="text-sm text-slate-700 font-medium leading-relaxed">
-                Nuestro manejo de la tierra se ciñe a las buenas prácticas agrícolas (BPA) protegiendo al medio ambiente y aplicando en forma racional los insumos.
+                Nuestro manejo de la tierra se ciñe a las buenas prácticas agrícolas (BPA) protegiendo al medio ambiente y aplicando en forma racional los insumos fitosanitarios y agroquímicos.
               </p>
             </div>
           </motion.div>
@@ -83,7 +83,7 @@ export default function Establecimiento() {
               <h3 className="text-2xl font-bold text-[#1D1934]">Ganadería</h3>
             </div>
             <p className="text-slate-600 font-light leading-relaxed mb-6">
-              El resto de la superficie está orientada a la ganadería de cría y de invernada (razas Angus, Hereford, Brangus y Braford). La Cassina cuenta con un rodeo de aproximadamente <strong className="text-slate-900">7500 animales</strong>, entre vacas de cría y hacienda en proceso de engorde.
+              El resto de la superficie está orientada a la ganadería de cría y de invernada (razas Angus, Hereford, Brangus y Braford). La Cassina cuenta con un rodeo de aproximadamente <strong className="text-slate-900">7500 animales</strong>, entre vacas de cría y hacienda en proceso de engorde e invernada.
             </p>
             <div className="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-100">
               <Award className="text-[#1D1934] w-6 h-6 shrink-0 mt-0.5" />
@@ -131,7 +131,7 @@ export default function Establecimiento() {
                 <Database className="text-[#ECD798] w-8 h-8 shrink-0 mt-1" />
                 <p className="text-sm text-gray-300 leading-relaxed">
                   <strong className="text-white block mb-1 text-base uppercase tracking-wider">Base de Datos Confiable</strong>
-                  Nuestra base de datos genética permite acceder a información verificable y clara sobre nuestros reproductores y madres, garantizando al productor que nuestros animales transmitirán su mérito genético con altísima confiabilidad.
+                  Nuestra base de datos genética permite acceder a información verificable y clara sobre nuestros reproductores y madres, lo que garantiza al productor que nuestros animales transmitirán su mérito genético a su rodeo con altísima confiabilidad.
                 </p>
               </motion.div>
             </div>
@@ -141,7 +141,7 @@ export default function Establecimiento() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                src= {establecimiento}
+                src={establecimiento}
                 alt="Toro de La Cassina" 
                 className="rounded-xl w-full h-48 md:h-64 object-cover shadow-2xl"
               />
@@ -150,7 +150,7 @@ export default function Establecimiento() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                src= {campo}   
+                src={campo}   
                 alt="Ganadería en el campo" 
                 className="rounded-xl w-full h-48 md:h-64 object-cover shadow-2xl mt-8 md:mt-12"
               />
