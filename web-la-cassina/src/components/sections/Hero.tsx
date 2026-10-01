@@ -13,14 +13,14 @@ import bannerRemate from '../../assets/images/bannerRemate.webp';
 import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
 // Importa el flyer nuevo aquí (asegúrate de tener el archivo en la carpeta)
-import flyerCachari from '../../assets/images/animales.webp';
+import flyerCachari from '../../assets/videos/cachari.mp4';
 
 export default function Hero() {
   // 1. Array de 4 Banners Rotativos con sus respectivos links internos
   const slides = [
     {
       id: 1,
-      image: flyerCachari, 
+      video: flyerCachari, 
       title: "PRÓXIMO REMATE",
       subtitle: "Acompañanos en nuestro próximo remate en Cacharí. Conocé las condiciones y la oferta genética.",
       link: "/remates",
@@ -167,15 +167,31 @@ export default function Hero() {
         <AnimatePresence mode="wait">
           <motion.div key={currentIndex} className="absolute inset-0">
             
-            <motion.img
-              src={slides[currentIndex].image}
-              alt={slides[currentIndex].title}
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-              initial={{ scale: 1.05, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            />
+            {/* Lógica para renderizar Video o Imagen según lo que tenga el slide actual */}
+            {slides[currentIndex].video ? (
+              <motion.video
+                src={slides[currentIndex].video}
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                autoPlay
+                loop
+                muted
+                playsInline
+                initial={{ scale: 1.05, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              />
+            ) : (
+              <motion.img
+                src={slides[currentIndex].image}
+                alt={slides[currentIndex].title}
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                initial={{ scale: 1.05, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              />
+            )}
             
             <div className="absolute inset-0 bg-gradient-to-r from-[#1D1934]/90 via-[#1D1934]/60 to-transparent pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1D1934]/60 via-transparent to-transparent pointer-events-none" />

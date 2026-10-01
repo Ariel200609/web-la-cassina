@@ -1,7 +1,7 @@
 // src/pages/ProgramaGenetico.tsx
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Dna, Activity, ShieldCheck, TrendingDown, Target, Award, Users, LineChart, Download, ChevronRight } from 'lucide-react';
+import { Dna, Activity, ShieldCheck, TrendingDown, Target, Award, Users, LineChart, Download } from 'lucide-react';
 import Footer from '../components/layout/Footer';
 
 // ASSETS (Asegurate de tener estas imágenes o reemplazá las rutas)
@@ -12,12 +12,13 @@ import Kyoto from '../assets/images/Kyoto.webp';
 import Kundo from '../assets/images/Kundo.webp';
 
 export default function ProgramaGenetico() {
+  // Array actualizado con los textos obligatorios
   const pasos = [
-    { icon: <Target className="w-8 h-8 text-[#ECD798]" />, titulo: "1. Identificación de rasgos", desc: "Selección de características deseables: producción de carne, fertilidad, adaptación al medio, habilidad materna y facilidad de parto." },
-    { icon: <Dna className="w-8 h-8 text-[#ECD798]" />, titulo: "2. Evaluación genética", desc: "Uso de datos de selección genómica y registros exhaustivos para su evaluación genética de forma precisa y objetiva." },
-    { icon: <Activity className="w-8 h-8 text-[#ECD798]" />, titulo: "3. Selección y Reproducción", desc: "Selección de los mejores animales para perpetuar sus características a través del apareamiento e inseminación artificial." },
-    { icon: <ShieldCheck className="w-8 h-8 text-[#ECD798]" />, titulo: "4. Evaluación sanitaria", desc: "Programa de nutrición y sanidad riguroso. La genética necesita esa excelente compañía para funcionar de manera óptima." },
-    { icon: <TrendingDown className="w-8 h-8 text-[#ECD798]" />, titulo: "5. Presión en la selección", desc: "Descarte estricto y riguroso de los animales inferiores o que no respondan a las exigencias de nuestro modelo." }
+    { icon: <Target className="w-8 h-8 text-[#ECD798]" />, titulo: "1. Identificación de rasgos", desc: "Se seleccionan las características deseables a transmitir como mayor producción de leche/carne, fertilidad, adaptación al clima, habilidad materna, facilidad de parto y otras." },
+    { icon: <Dna className="w-8 h-8 text-[#ECD798]" />, titulo: "2. Evaluación Genética", desc: "Uso de datos de selección genómico y registros de desempeño para predecir el mérito genético." },
+    { icon: <Activity className="w-8 h-8 text-[#ECD798]" />, titulo: "3. Selección y Reproducción", desc: "Selección de los animales, propios o externos, con los mejores genes para perpetuar sus características a través del apareamiento o métodos como inseminación artificial y trasplante de embriones." },
+    { icon: <ShieldCheck className="w-8 h-8 text-[#ECD798]" />, titulo: "4. Evaluación sanitaria", desc: "A lo largo de todo el proceso nuestros veterinarios implementan un plan sanitario y alimentario para nuestros animales maximizando el óptimo desarrollo." },
+    { icon: <TrendingDown className="w-8 h-8 text-[#ECD798]" />, titulo: "5. Presión en la selección", desc: "Presión en la selección descartando los animales inferiores o que no respondan a nuestro modelo productivo." }
   ];
 
   const torosPadres = [
@@ -41,7 +42,7 @@ export default function ProgramaGenetico() {
             alt="Programa Genético La Cassina" 
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1D1934] via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-transparent"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
@@ -54,17 +55,6 @@ export default function ProgramaGenetico() {
             Programa <br className="md:hidden" />
             <span className="text-[#ECD798]">Genético</span>
           </motion.h1>
-
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }} 
-            animate={{ y: 0, opacity: 1 }} 
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 text-lg md:text-xl text-gray-200 font-light leading-relaxed max-w-4xl mx-auto border-l-4 border-[#ECD798] pl-6 text-left bg-white/5 p-6 rounded-r-lg backdrop-blur-sm"
-          >
-            <p className="mb-4">
-              <strong className="text-white font-medium">Nuestra búsqueda de construir un rodeo con genética productiva</strong> comenzó con la visión de maximizar la rentabilidad del productor ganadero como premisa esencial.
-            </p>
-          </motion.div>
 
           <motion.div
             initial={{ y: 30, opacity: 0 }} 
@@ -86,7 +76,63 @@ export default function ProgramaGenetico() {
         </div>
       </section>
 
-      {/* 2. TOROS PADRES CAMPAÑA 2026 */}
+      {/* 1.5 TEXTO DESCRIPTIVO - AÑADIDO SEGÚN REQUERIMIENTO */}
+      <section className="py-16 px-4 bg-slate-50 relative z-10 -mt-20">
+        <div className="max-w-4xl mx-auto bg-white p-10 md:p-14 rounded-2xl shadow-xl border-t-4 border-[#ECD798]">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6 text-slate-700 font-light leading-relaxed text-lg"
+          >
+            <p>
+              <strong className="text-[#1D1934] font-bold">Es un proceso sistemático y planificado</strong> que utiliza la selección de los mejores reproductores y madres de cada raza, para mejorar características deseables (producción, salud, adaptación, transmisión de rasgos) en una población ganadera, incrementando su mérito genético y eficiencia económica.
+            </p>
+            <p>
+              Trabajamos cuatro razas a la par para lograr en cada una animales PP y PC/PR/C: <strong>Angus, Hereford, Branford y Brangus</strong>. Nuestro objetivo es lograr un progreso genético continuo en cada una de las razas, maximizando el rendimiento productivo mediante la toma de decisiones informadas y registros confiables.
+            </p>
+            <div className="bg-slate-100 p-6 rounded-xl mt-6 border border-slate-200 text-base">
+              <p className="mb-2"><strong>Patricia Cassini</strong> es la responsable de la gestión integral del programa genético.</p>
+              <p className="mb-2"><strong>Baltasar Beltrán</strong> es nuestro reconocido genetista, a cargo del rodeo desde hace un cuarto de siglo.</p>
+              <p><strong>Pablo Clausen</strong> es nuestro veterinario general.</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 2. NUESTRO PROCESO (5 Pasos actualizados) */}
+      <section className="py-24 px-4 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-copperplate text-[#1D1934] uppercase">Los cinco pasos de nuestro proceso</h2>
+          <div className="w-24 h-1 bg-[#ECD798] mx-auto mt-6"></div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {pasos.map((paso, index) => (
+            <div key={index} className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden flex flex-col h-full">
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#ECD798] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="w-16 h-16 bg-[#1D1934] rounded-lg flex items-center justify-center mb-6 shadow-md shrink-0">
+                {paso.icon}
+              </div>
+              <h3 className="text-xl font-bold text-[#1D1934] mb-4">{paso.titulo}</h3>
+              <p className="text-slate-600 font-light grow">{paso.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 max-w-4xl mx-auto text-center"
+        >
+          <p className="text-slate-700 font-light leading-relaxed text-lg italic bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+            "Cada animal que ofrece La Cassina ha sido seleccionado con mucha presión para garantizar su calidad y mérito. Este trabajo lo hacemos junto con las asociaciones de cada raza y se basa en la recolección sistemática de datos que nos permiten tomar decisiones y diseñar nuestro rodeo."
+          </p>
+        </motion.div>
+      </section>
+
+      {/* 3. TOROS PADRES CAMPAÑA 2026 */}
       <section className="py-24 bg-[#1D1934] relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
@@ -94,9 +140,6 @@ export default function ProgramaGenetico() {
               <span className="text-[#ECD798] uppercase tracking-widest text-sm font-bold mb-4 block">Campaña 2026</span>
               <h2 className="text-4xl md:text-5xl font-copperplate text-white uppercase leading-tight">Toros Padres</h2>
             </div>
-            <button className="hidden md:flex items-center gap-2 text-[#ECD798] hover:text-white transition-colors uppercase tracking-widest text-sm font-bold">
-              Ver Catálogo Completo <ChevronRight className="w-4 h-4" />
-            </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -113,30 +156,6 @@ export default function ProgramaGenetico() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 3. NUESTRO PROCESO (5 Pasos) */}
-      <section className="py-24 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-copperplate text-[#1D1934] uppercase">Metodología</h2>
-          <div className="w-24 h-1 bg-[#ECD798] mx-auto mt-6"></div>
-          <p className="mt-6 text-slate-500 max-w-2xl mx-auto text-lg">
-            Un proceso sistemático, planificado y auditado para asegurar el progreso genético continuo.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pasos.map((paso, index) => (
-            <div key={index} className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#ECD798] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-[#1D1934] rounded-lg flex items-center justify-center mb-6 shadow-md">
-                {paso.icon}
-              </div>
-              <h3 className="text-xl font-bold text-[#1D1934] mb-4">{paso.titulo}</h3>
-              <p className="text-slate-600 font-light">{paso.desc}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -158,7 +177,7 @@ export default function ProgramaGenetico() {
               { icon: <LineChart/>, title: "Crecimiento y Altura Moderada", desc: "Sincronizamos tamaño y sistema pastoril. Evitamos animales excesivamente altos que tarden en terminarse." },
               { icon: <Users/>, title: "Aptitud Materna y Calidad de Res", desc: "Superando la media nacional en leche. El fácil engrasamiento otorga excelente calidad de <i>marbling</i> en el Área de Ojo de Bife." }
             ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow-md flex items-start gap-6 border border-slate-100">
+              <div key={i} className="bg-white p-8 rounded-xl shadow-md flex items-start gap-6 border border-slate-100 h-full">
                 <div className="w-14 h-14 bg-[#1D1934] rounded-full flex items-center justify-center text-[#ECD798] shrink-0 shadow-sm">
                   {item.icon}
                 </div>
