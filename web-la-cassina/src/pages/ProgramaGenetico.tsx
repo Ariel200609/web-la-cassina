@@ -5,11 +5,11 @@ import { Dna, Activity, ShieldCheck, TrendingDown, Target, Award, Users, LineCha
 import Footer from '../components/layout/Footer';
 
 // ASSETS (Asegurate de tener estas imágenes o reemplazá las rutas)
-import heroProgramaGenetico from '../assets/images/programaGenetico.png'; 
+import heroProgramaGenetico from '../assets/images/programagenetico.webp'; 
 
-import Angus from '../assets/images/Kundo.png';
-import Kyoto from '../assets/images/Kyoto.png';
-import Kundo from '../assets/images/Kundo.png';
+import Angus from '../assets/images/Kundo.webp';
+import Kyoto from '../assets/images/Kyoto.webp';
+import Kundo from '../assets/images/Kundo.webp';
 
 export default function ProgramaGenetico() {
   const pasos = [

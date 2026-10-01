@@ -16,10 +16,10 @@ import {
 import Footer from '../components/layout/Footer';
 
 //img
-import HeroRemate from '../assets/images/HeroDeRemates.png';
-import Colorado from '../assets/images/colorado.png';
-import hereford from '../assets/images/TORO-HEREFORD.png';
-import animales from '../assets/images/programaGenetico.png';
+import HeroRemate from '../assets/images/HeroDeRemates.webp';
+import Colorado from '../assets/images/colorado.webp';
+import hereford from '../assets/images/TORO-HEREFORD.webp';
+import animales from '../assets/images/programaGenetico.webp';
 
 export default function Remates() {
   // Reseteo de scroll al entrar

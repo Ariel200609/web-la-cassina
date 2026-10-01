@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Users, ShieldCheck, Tractor, Truck, Home } from 'lucide-react';
 import Footer from '../layout/Footer';
-import presidente from '../../assets/images/cassini.png'
+import presidente from '../../assets/images/cassini.webp'
 
 export default function Equipo() {
   const directorio = [

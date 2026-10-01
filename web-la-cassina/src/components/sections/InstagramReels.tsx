@@ -2,10 +2,10 @@
 import { motion } from 'framer-motion';
 import { PlayCircle, ExternalLink } from 'lucide-react';
 
-import reels1 from '../../assets/images/reels1.png';
-import reels2 from '../../assets/images/reels2.png';
-import reels3 from '../../assets/images/reels3.png';
-import reels4 from '../../assets/images/reels4.png';
+import reels1 from '../../assets/images/reels1.webp';
+import reels2 from '../../assets/images/reels2.webp';
+import reels3 from '../../assets/images/reels3.webp';
+import reels4 from '../../assets/images/reels4.webp';
 
 // Ícono SVG de Instagram personalizado
 const InstagramIcon = ({ className }: { className?: string }) => (

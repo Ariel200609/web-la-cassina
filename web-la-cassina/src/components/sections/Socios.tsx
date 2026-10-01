@@ -2,11 +2,11 @@
 import { motion } from 'framer-motion';
 
 // Importamos las imágenes de los logos
-import pedronoelrey from '../../assets/images/pedronoelrey.png';
-import colomboycolombo from '../../assets/images/colomboycolombo.png';
-import monasterio from '../../assets/images/monasterio.png';
-import leojaconis from '../../assets/images/leojaconis.png';
-import enrico from '../../assets/images/enrico.png';
+import pedronoelrey from '../../assets/images/pedronoelrey.webp';
+import colomboycolombo from '../../assets/images/colomboycolombo.webp';
+import monasterio from '../../assets/images/monasterio.webp';
+import leojaconis from '../../assets/images/leojaconis.webp';
+import enrico from '../../assets/images/enrico.webp';
 
 export default function Socios() {
   const logosOriginales = [

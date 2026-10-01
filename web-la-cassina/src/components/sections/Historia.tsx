@@ -1,8 +1,8 @@
 // src/components/sections/Historia.tsx
 import { motion } from "framer-motion";
 import Footer from "../layout/Footer";
-import campo from "../../assets/images/campo.png";
-import logoAniversario from "../../assets/images/25aniversariologo.png";
+import campo from "../../assets/images/campo.webp";
+import logoAniversario from "../../assets/images/25aniversariologo.webp";
 
 export default function Historia() {
   const hitos = [

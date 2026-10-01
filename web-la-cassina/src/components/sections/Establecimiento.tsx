@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Tractor, Leaf, ShieldCheck, Database, Award } from 'lucide-react';
 import videoDron from '../../assets/videos/dron.mp4';
 import Footer from '../layout/Footer';
-import establecimiento from '../../assets/images/establecimiento.png'; 
-import campo from '../../assets/images/campo.png'; 
+import establecimiento from '../../assets/images/establecimiento.webp'; 
+import campo from '../../assets/images/campo.webp'; 
 
 export default function Establecimiento() {
   return (

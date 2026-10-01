@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // Imágenes del Carrusel
-import toroHereford from '../../assets/images/TORO-HEREFORD.png';
-import cabana from '../../assets/images/cabana.png';
-import animales from '../../assets/images/animales.png';
-import bannerRemate from '../../assets/images/bannerRemate.png';
-import bannerExpo from '../../assets/images/bannerExpo.png';
-import animales2 from '../../assets/images/animales.png';
+import toroHereford from '../../assets/images/TORO-HEREFORD.webp';
+import cabana from '../../assets/images/cabana.webp';
+import animales from '../../assets/images/animales.webp';
+import bannerRemate from '../../assets/images/bannerRemate.webp';
+import bannerExpo from '../../assets/images/bannerExpo.webp';
+import animales2 from '../../assets/images/animales.webp';
 // Importa el flyer nuevo aquí (asegúrate de tener el archivo en la carpeta)
-import flyerCachari from '../../assets/images/animales.png';
+import flyerCachari from '../../assets/images/animales.webp';
 
 export default function Hero() {
   // 1. Array de 4 Banners Rotativos con sus respectivos links internos

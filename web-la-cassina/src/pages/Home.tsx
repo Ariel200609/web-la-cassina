@@ -21,7 +21,7 @@ export default function Home() {
         <meta property="og:url" content="https://www.lacassina.com/" />
         <meta property="og:title" content="La Cassina | Cabaña líder en Genética Bovina" />
         <meta property="og:description" content="Excelencia en genética Angus. Criadores de campeones argentinos desde 1960." />
-        <meta property="og:image" content="/images/logo.png" /> {/* Asegúrate de tener esta imagen en public */}
+        <meta property="og:image" content="/images/logo.webp" /> {/* Asegúrate de tener esta imagen en public */}
       </Helmet>
 
       {/* 2. El componente Navbar (mantenemos el tuyo) */}

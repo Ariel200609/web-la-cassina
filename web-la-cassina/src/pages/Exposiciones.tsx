@@ -4,7 +4,7 @@ import { Calendar, MapPin, Trophy, Star } from 'lucide-react';
 import Footer from '../components/layout/Footer';
 import { Helmet } from 'react-helmet-async';
 
-import imgbanner from  "../assets/images/bannerexposicion.png"
+import imgbanner from  "../assets/images/bannerexposicion.webp"
 
 export default function Exposiciones() {
   // Reseteo de scroll al entrar

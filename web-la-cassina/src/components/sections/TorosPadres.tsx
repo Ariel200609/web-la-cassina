@@ -4,16 +4,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Ruler, Scale, Activity } from 'lucide-react';
 import Footer from '../layout/Footer';
 
-import DoubleWide from '../../assets/images/DoubleWide.png';
-import Decreto from '../../assets/images/Decreto.png';
-import Kyoto from '../../assets/images/Kyoto.png';
-import Kundo from '../../assets/images/Kundo.png';
-import Fundamentalista from '../../assets/images/Fundamentalista.png';
-import Bandolero from '../../assets/images/Bandolero.png';
-import Funcional from '../../assets/images/Funcional.png';
-import Forjador from '../../assets/images/Forjador.png';
-import Canonazo from '../../assets/images/Cañonazo.png';
-import Midas from '../../assets/images/Midas.png';
+import DoubleWide from '../../assets/images/DoubleWide.webp';
+import Decreto from '../../assets/images/Decreto.webp';
+import Kyoto from '../../assets/images/Kyoto.webp';
+import Kundo from '../../assets/images/Kundo.webp';
+import Fundamentalista from '../../assets/images/Fundamentalista.webp';
+import Bandolero from '../../assets/images/Bandolero.webp';
+import Funcional from '../../assets/images/Funcional.webp';
+import Forjador from '../../assets/images/Forjador.webp';
+import Canonazo from '../../assets/images/Cañonazo.webp';
+import Midas from '../../assets/images/Midas.webp';
 
 // Datos extraídos del catálogo oficial de La Cassina
 const padresData = [

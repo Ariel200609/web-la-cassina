@@ -15,7 +15,7 @@ export default function Cabana() {
         <meta property="og:url" content="https://www.lacassina.com/cabana"/>
         <meta property="og:title" content="La Cabaña Angus y Hereford | La Cassina"/>
         <meta property="og:description" content="Excelencia en genética Angus, Hereford, Brangus y Braford. Criadores de campeones argentinos desde 1960."/>
-        <meta property="og:image" content="/images/logo.png"/>
+        <meta property="og:image" content="/images/logotiposinfondo.webp"/>
       </Helmet>
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         

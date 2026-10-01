@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import logo from '../../assets/images/logotiposinfondo.png';
+import logo from '../../assets/images/logotiposinfondo.webp';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

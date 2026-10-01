@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, PlayCircle, Newspaper } from 'lucide-react';
 import Footer from '../layout/Footer'; // <-- Importamos el Footer
-import Notaclarin from '../../assets/images/notaClarin.png';
+import Notaclarin from '../../assets/images/notaClarin.webp';
 
 export default function Prensa() {
   // La primera nota la usaremos como "Destacada"
