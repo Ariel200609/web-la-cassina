@@ -7,9 +7,9 @@ import Footer from '../components/layout/Footer';
 // ASSETS (Asegurate de tener estas imágenes o reemplazá las rutas)
 import heroProgramaGenetico from '../assets/images/HeroProgramaGenetico.webp'; 
 
-import Angus from '../assets/images/Kundo.webp';
-import Kyoto from '../assets/images/Kyoto.webp';
-import Kundo from '../assets/images/Kundo.webp';
+import Decreto from '../assets/images/Decreto.png';
+import Kyoto from '../assets/images/Kyoto.png';
+import Kundo from '../assets/images/Kundo.png';
 
 export default function ProgramaGenetico() {
   // Array actualizado con los textos obligatorios
@@ -22,7 +22,7 @@ export default function ProgramaGenetico() {
   ];
 
   const torosPadres = [
-    { nombre: "Decreto", raza: "Angus", frame: "Moderado", img: Angus },
+    { nombre: "Decreto", raza: "Angus", frame: "Moderado", img: Decreto },
     { nombre: "Kyoto", raza: "Angus", frame: "Moderado", img: Kyoto },
     { nombre: "Kundo", raza: "Hereford", frame: "Moderado", img: Kundo }
   ];

@@ -17,9 +17,13 @@ import Footer from '../components/layout/Footer';
 
 //img
 import HeroRemate from '../assets/images/HeroDeRemates.webp';
-import Colorado from '../assets/images/colorado.webp';
-import hereford from '../assets/images/TORO-HEREFORD.webp';
 import animales from '../assets/images/programaGenetico.webp';
+
+import Alfonso from '../assets/images/Alfonso.png';
+import Baqueano from '../assets/images/Baqueano.png';
+import Kundo from '../assets/images/Kundo.png';
+import Botija from '../assets/images/Botija.png';
+
 
 export default function Remates() {
   // Reseteo de scroll al entrar
@@ -50,10 +54,10 @@ export default function Remates() {
 
   // TOROS PADRES ACTUALIZADOS
   const torosDestacados = [
-    { nombre: "Alfonso", rp: "-", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: HeroRemate },
-    { nombre: "Baqueano", rp: "-", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Colorado },
-    { nombre: "Kundo", rp: "1385", raza: "Angus", desc: "Apertura de sangre. Destacada estructura y un tren posterior que impresiona.", img: hereford },
-    { nombre: "Botija", rp: "-", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: animales }
+    { nombre: "Alfonso", rp: "17", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Alfonso },
+    { nombre: "Baqueano", rp: "833", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Baqueano },
+    { nombre: "Kundo", rp: "1385", raza: "Angus", desc: "Apertura de sangre. Destacada estructura y un tren posterior que impresiona.", img: Kundo },
+    { nombre: "Botija", rp: "1025", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Botija }
   ];
 
   // GIRA DE REMATES (Cacharí agregado al inicio de la lista)
