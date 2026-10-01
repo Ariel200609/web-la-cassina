@@ -1,0 +1,6 @@
+# robots.txt - La Cassina
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.lacassina.com/sitemap.xml
