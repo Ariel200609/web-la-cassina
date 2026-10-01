@@ -10,7 +10,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function WhatsAppButton() {
   // Número configurado con código de país (54) + celular sin el 15.
-  const phoneNumber = "5492923564849"; 
+  const phoneNumber = "5492923564889"; 
   const message = "Hola, me contacto desde la página web de La Cassina. Quisiera hacer una consulta.";
   
   // url formatada para que abra WhatsApp automáticamente
