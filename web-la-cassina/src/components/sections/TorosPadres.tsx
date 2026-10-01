@@ -8,12 +8,12 @@ import DoubleWide from '../../assets/images/DoubleWide.png';
 import Decreto from '../../assets/images/Decreto.png';
 import Kyoto from '../../assets/images/Kyoto.png';
 import Kundo from '../../assets/images/Kundo.png';
-import Fundamentalista from '../../assets/images/Fundamentalista.png';
+import Fundamentalista from '../../assets/images/Fundamentalista.webp';
 import Bandolero from '../../assets/images/Bandolero.png';
-import Funcional from '../../assets/images/Funcional.png';
-import Forjador from '../../assets/images/Forjador.png';
-import Canonazo from '../../assets/images/Canonazo.png';
-import Midas from '../../assets/images/Midas.png';
+import Funcional from '../../assets/images/Funcional.webp';
+import Forjador from '../../assets/images/Forjador.webp';
+import Canonazo from '../../assets/images/Canonazo.webp';
+import Midas from '../../assets/images/Midas.webp';
 
 // Datos extraídos del catálogo oficial de La Cassina
 const padresData = [
