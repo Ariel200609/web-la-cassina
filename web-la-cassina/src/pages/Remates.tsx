@@ -48,16 +48,17 @@ export default function Remates() {
     { icon: <FileText/>, titulo: "Financiación", desc: "Tarjetas Macro Agro, Banco Provincia, Galicia" }
   ];
 
-  // TOROS PADRES ACTUALIZADOS (Alfonso, Baqueano, Kundo, Botija)
+  // TOROS PADRES ACTUALIZADOS
   const torosDestacados = [
     { nombre: "Alfonso", rp: "-", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: HeroRemate },
     { nombre: "Baqueano", rp: "-", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Colorado },
-    { nombre: "Kundo", rp: "1385", raza: "Angus", desc: "Apertura de sangre. Destacada estructura y un tren posterior que impresiona.", img: hereford }, //[cite: 1]
+    { nombre: "Kundo", rp: "1385", raza: "Angus", desc: "Apertura de sangre. Destacada estructura y un tren posterior que impresiona.", img: hereford },
     { nombre: "Botija", rp: "-", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: animales }
   ];
 
-  // GIRA DE REMATES
+  // GIRA DE REMATES (Cacharí agregado al inicio de la lista)
   const giraRemates = [
+    { ciudad: "Cacharí", fecha: "07 de Octubre", tipo: "Remate Destacado", consignatario: "La Cassina", pdf: "/catalogos/catalogo-cachari.pdf" },
     { ciudad: "Cañuelas", fecha: "01 de Agosto", tipo: "Remate de Elite (MAG)", consignatario: "Pedro Noel Irey", pdf: "/catalogos/catalogo-canuelas.pdf" },
     { ciudad: "9 de Julio", fecha: "A confirmar", tipo: "Remate Especial", consignatario: "Consignataria Melicura", pdf: "/catalogos/catalogo-9dejulio.pdf" },
     { ciudad: "Daireaux", fecha: "10 de Julio", tipo: "Remate Anual", consignatario: "Monasterio Tattersall", pdf: "/catalogos/catalogo-daireaux.pdf" },
@@ -163,7 +164,7 @@ export default function Remates() {
               </div>
             </div>
 
-            {/* Imagen del Remate (Frase eliminada) */}
+            {/* Imagen del Remate */}
             <div className="w-full lg:w-1/2 relative min-h-[400px]">
               <img 
                 src={animales} 
