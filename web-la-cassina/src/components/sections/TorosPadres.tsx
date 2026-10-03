@@ -121,28 +121,28 @@ const padresData = [
 
   // BRANGUS COLORADO
   {
-    id: 'forjador',
+    id: 'parana',
     raza: 'Brangus Colorado',
-    nombre: 'Forjador',
-    registro: 'RP: 651 | HBA: 145069',
-    descripcion: '"Líder carnicero. Colorado completo con crecimiento destacado en todas sus etapas."',
+    nombre: 'Parana',
+    registro: 'RP: 9058 | HBA: 785150',
+    descripcion: '"De pelo fino,gran capacidad de engorde ,exelente cabeza en combinanci n con un buen biotipo pastor I"',
     stats: [
-      { label: 'PESO', valor: '944 kg', icon: <Scale className="w-4 h-4" /> },
+      { label: 'PESO', valor: '940 kg', icon: <Scale className="w-4 h-4" /> },
       { label: 'CE', valor: '49 cm', icon: <Activity className="w-4 h-4" /> },
-      { label: 'ALTURA', valor: '1.39 m', icon: <Ruler className="w-4 h-4" /> }
+      { label: 'ALTURA', valor: '1.37 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Grasa Intramuscular (%GI) en el 1% superior de la raza.',
     imagen: Forjador
   },
   {
-    id: 'canonazo',
+    id: 'botija',
     raza: 'Brangus Colorado',
-    nombre: 'Cañonazo',
-    registro: 'RP: 162 | HBA: 153039',
-    descripcion: '"Capacidad reproductiva extrema. Un toro con una precocidad sexual difícil de igualar."',
+    nombre: 'Botija',
+    registro: 'RP: 1025 | HBA: 877505',
+    descripcion: '"De color rojo intenso ,impactacte tren prosterior y excelente calidad seminal"',
     stats: [
-      { label: 'PESO', valor: '760 kg', icon: <Scale className="w-4 h-4" /> },
-      { label: 'CE', valor: '50 cm', icon: <Activity className="w-4 h-4" /> },
+      { label: 'PESO', valor: '910 kg', icon: <Scale className="w-4 h-4" /> },
+      { label: 'CE', valor: '43 cm', icon: <Activity className="w-4 h-4" /> },
       { label: 'ALTURA', valor: '1.35 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Muy destacado en índices de crecimiento y fertilidad.',
