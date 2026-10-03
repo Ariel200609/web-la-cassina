@@ -9,7 +9,7 @@ import Decreto from '../../assets/images/Decreto.png';
 import Kyoto from '../../assets/images/Kyoto.png';
 import Kundo from '../../assets/images/Kundo.png';
 import Fundamentalista from '../../assets/images/Fundamentalista.webp';
-import Bandolero from '../../assets/images/Bandolero.webp';
+import Bandolero from '../../assets/images/Bandolero.png';
 import Funcional from '../../assets/images/Funcional.webp';
 import Midas from '../../assets/images/Midas.webp';
 import Parana from '../../assets/images/Parana.png';
