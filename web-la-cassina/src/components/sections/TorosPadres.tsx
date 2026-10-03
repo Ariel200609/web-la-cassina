@@ -9,11 +9,11 @@ import Decreto from '../../assets/images/Decreto.png';
 import Kyoto from '../../assets/images/Kyoto.png';
 import Kundo from '../../assets/images/Kundo.png';
 import Fundamentalista from '../../assets/images/Fundamentalista.webp';
-import Bandolero from '../../assets/images/Bandolero.png';
+import Bandolero from '../../assets/images/Bandolero.webp';
 import Funcional from '../../assets/images/Funcional.webp';
-import Forjador from '../../assets/images/Forjador.webp';
-import Canonazo from '../../assets/images/Canonazo.webp';
 import Midas from '../../assets/images/Midas.webp';
+import Parana from '../../assets/images/Parana.png';
+import Botija from '../../assets/images/Botija.png';
 
 // Datos extraídos del catálogo oficial de La Cassina
 const padresData = [
@@ -132,7 +132,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.37 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Grasa Intramuscular (%GI) en el 1% superior de la raza.',
-    imagen: Forjador
+    imagen: Parana
   },
   {
     id: 'botija',
@@ -146,7 +146,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.35 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Muy destacado en índices de crecimiento y fertilidad.',
-    imagen: Canonazo
+    imagen: Botija
   },    
 
   // BRAFORD
