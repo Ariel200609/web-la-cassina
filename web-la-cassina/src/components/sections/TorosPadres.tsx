@@ -8,7 +8,7 @@ import Footer from '../layout/Footer';
 import Apache from '../../assets/images/Apache.png';
 import Alfonso from '../../assets/images/Alfonso.png';
 import Aparicio from '../../assets/images/Aparicio.png';
-import Bandolero from '../../assets/images/Bandolero.png';
+import Bandolero from '../../assets/images/bandolero.png';
 import Baqueano from '../../assets/images/Baqueano.png';
 import Botija from '../../assets/images/Botija.png';
 import Cacique from '../../assets/images/Cacique.png';
