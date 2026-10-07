@@ -1,4 +1,3 @@
-// src/components/sections/Remates.tsx
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -10,11 +9,13 @@ import {
   Truck, 
   CreditCard,
   PlayCircle,
-  FileText
+  FileText,
+  Dna,
+  Info
 } from 'lucide-react';
 
 // Layout
-import Footer from '../components/layout/Footer'; // Ajusta la ruta si es necesario ('../components/layout/Footer')
+import Footer from '../components/layout/Footer';
 
 // Imágenes
 import HeroRemate from '../assets/images/HeroDeRemates.webp';
@@ -52,15 +53,73 @@ export default function Remates() {
     { icon: <FileText/>, titulo: "Financiación", desc: "Tarjetas Macro Agro, Banco Provincia, Galicia" }
   ];
 
-  // TOROS PADRES ACTUALIZADOS (Con información real del catálogo)
+  // TOROS PADRES DEL REMATE CON INFORMACIÓN GENÉTICA PARA EL HOVER
   const torosDestacados = [
-    { nombre: "Alfonso", rp: "17", raza: "Angus", desc: "Toro muy prolijo, de excelente estructura, buena musculatura y capacidad de engrasamiento. De tamaño moderado.", img: Alfonso },
-    { nombre: "Baqueano", rp: "833", raza: "Angus", desc: "Destacada producción caracterizada por bajo peso al nacer, mucha clase y desarrollo. Extrema facilidad de parto.", img: Baqueano },
-    { nombre: "Kundo", rp: "1281", raza: "Angus", desc: "Moderado, profundo, de engrosamiento y masas musculares destacadas con un fenotipo muy atractivo.", img: Kundo },
-    { nombre: "Botija", rp: "1025", raza: "Angus", desc: "De color rojo intenso, impactante tren posterior y excelente calidad seminal. Mucha facilidad de parto.", img: Botija }
+    { 
+      nombre: "Alfonso", 
+      rp: "17", 
+      raza: "Angus", 
+      desc: "Excelente estructura, buena musculatura y capacidad de engrasamiento. Sus crías promedian 32 kilos al nacer.", 
+      img: Alfonso,
+      hoverInfo: {
+        pedigree: { padre: "La Segunda 11216 Aristóteles", madre: "Mayaco 252 M136 M47" },
+        deps: [
+          { caracteristica: 'P. Nacer', valor: '-0.7' },
+          { caracteristica: 'P. Destete', valor: '0.1' },
+          { caracteristica: 'Leche', valor: '4.8' },
+          { caracteristica: 'P. Final', valor: '16.2' },
+          { caracteristica: 'CE', valor: '0.9' }
+        ]
+      }
+    },
+    { 
+      nombre: "Baqueano", 
+      rp: "833", 
+      raza: "Angus", 
+      desc: "Destacada producción caracterizada por bajo peso al nacer, mucha clase y desarrollo. Extrema facilidad de parto.", 
+      img: Baqueano,
+      hoverInfo: {
+        pedigree: { padre: "DOBLEHACHE 505 Sergio", madre: "DOBLEHACHE 398" },
+        deps: [
+          { caracteristica: 'P. Nacer', valor: '-0.5' },
+          { caracteristica: 'P. Destete', valor: '16.4' },
+          { caracteristica: 'P. Final', valor: '49.9' },
+          { caracteristica: 'CE', valor: '1.9' },
+          { caracteristica: 'AOB', valor: '2.7' }
+        ]
+      }
+    },
+    { 
+      nombre: "Kundo", 
+      rp: "1281", 
+      raza: "Angus Colorado", 
+      desc: "Moderado, profundo. Bajo peso con muy buen potencial de desarrollo. Engrasamiento y masas musculares destacadas.", 
+      img: Kundo,
+      hoverInfo: {
+        pedigree: { padre: "Esencial 37 Arquimedes T/E", madre: "Esencial Suyai" },
+        deps: null // Solo mostramos pedigree porque no hay DEPs específicos provistos
+      }
+    },
+    { 
+      nombre: "Botija", 
+      rp: "1025", 
+      raza: "Angus Colorado", 
+      desc: "De color rojo intenso e impactante tren posterior. Mucha facilidad de parto y llamativa curva de crecimiento final.", 
+      img: Botija,
+      hoverInfo: {
+        pedigree: { padre: "Esencial 37 Arquimedes T/E", madre: "Esencial Suyai" },
+        deps: [
+          { caracteristica: 'P. Nacer', valor: '-1.0' },
+          { caracteristica: 'P. Destete', valor: '10.6' },
+          { caracteristica: 'Leche', valor: '2.9' },
+          { caracteristica: 'P. Final', valor: '51.0' },
+          { caracteristica: 'AOB', valor: '3.0' }
+        ]
+      }
+    }
   ];
 
-  // GIRA DE REMATES (Con Cacharí y Hasenkamp)
+  // GIRA DE REMATES
   const giraRemates = [
     { ciudad: "Cacharí", fecha: "07 de Octubre", tipo: "Remate Destacado", consignatario: "La Cassina", pdf: "/catalogos/catalogo-cachari.pdf" },
     { ciudad: "Cañuelas", fecha: "01 de Agosto", tipo: "Remate de Elite (MAG)", consignatario: "Pedro Noel Irey", pdf: "/catalogos/catalogo-canuelas.pdf" },
@@ -115,7 +174,6 @@ export default function Remates() {
             viewport={{ once: true }}
             className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row"
           >
-            {/* Info del Remate */}
             <div className="w-full lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
               <span className="text-[#C9AE71] font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Evento Destacado</span>
               
@@ -168,7 +226,6 @@ export default function Remates() {
               </div>
             </div>
 
-            {/* Imagen del Remate */}
             <div className="w-full lg:w-1/2 relative min-h-[400px]">
               <img 
                 src={animales} 
@@ -204,7 +261,7 @@ export default function Remates() {
         </div>
       </section>
 
-      {/* TOROS PADRES DEL CATÁLOGO */}
+      {/* TOROS PADRES DEL CATÁLOGO (CON HOVER DE INFO GENÉTICA) */}
       <section className="py-24 px-4 bg-[#1A1528]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -229,18 +286,55 @@ export default function Remates() {
                 <img src={toro.img} alt={toro.nombre} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A1528] via-[#1A1528]/40 to-transparent"></div>
+
+                {/* Ícono indicador (palpita levemente para invitar a pasar el mouse) */}
+                <div className="absolute top-4 right-4 bg-[#1A1528]/80 backdrop-blur-sm p-2 rounded-full z-20 group-hover:opacity-0 transition-opacity duration-300 shadow-lg border border-[#C9AE71]/30">
+                  <Info className="w-5 h-5 text-[#C9AE71]" />
+                </div>
                 
-                <div className="absolute inset-0 bg-[#C9AE71]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm flex flex-col items-center justify-center p-8 text-center">
-                  <h4 className="text-[#1A1528] font-copperplate text-2xl mb-4">{toro.nombre}</h4>
-                  <p className="text-[#1A1528]/80 font-medium mb-6">{toro.desc}</p>
-                  <span className="inline-block border-2 border-[#1A1528] text-[#1A1528] font-bold uppercase tracking-widest text-xs py-2 px-6 rounded-full">
-                    RP: {toro.rp}
-                  </span>
+                {/* PANEL OVERLAY CON INFO GENÉTICA AL HACER HOVER */}
+                <div className="absolute inset-0 bg-[#1D1934]/95 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm flex flex-col justify-center p-6 text-center translate-y-4 group-hover:translate-y-0 z-30">
+                  <h4 className="text-[#C9AE71] font-bold text-sm uppercase tracking-widest mb-4 border-b border-[#C9AE71]/30 pb-2 flex items-center justify-center gap-2">
+                    <Dna className="w-4 h-4" /> Genética
+                  </h4>
+                  
+                  {/* Pedigree */}
+                  <div className="mb-4">
+                    <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1">Pedigree</span>
+                    <ul className="text-xs space-y-1 text-slate-200">
+                      <li><strong className="text-white">Padre:</strong> {toro.hoverInfo.pedigree.padre}</li>
+                      <li><strong className="text-white">Madre:</strong> {toro.hoverInfo.pedigree.madre}</li>
+                    </ul>
+                  </div>
+
+                  {/* DEPs */}
+                  {toro.hoverInfo.deps && (
+                    <div className="mt-2">
+                      <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-2">DEPs Destacados</span>
+                      <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-[11px]">
+                        {toro.hoverInfo.deps.map((dep, i) => (
+                          <div key={i} className="flex justify-between border-b border-white/10 pb-0.5">
+                            <span className="text-slate-300">{dep.caracteristica}:</span>
+                            <strong className="text-[#C9AE71]">{dep.valor}</strong>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Descripción breve (visible si sobra espacio) */}
+                  <p className="text-xs text-slate-400 font-light mt-4 italic line-clamp-3">
+                    {toro.desc}
+                  </p>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full p-8 transition-transform duration-500 group-hover:translate-y-full">
+                {/* Banner inferior fijo con Nombre y RP */}
+                <div className="absolute bottom-0 left-0 w-full p-8 transition-transform duration-500 group-hover:translate-y-full z-20">
                   <span className="text-[#C9AE71] text-xs font-bold tracking-widest uppercase mb-2 block">{toro.raza}</span>
-                  <h3 className="text-2xl font-bold text-white leading-tight">{toro.nombre}</h3>
+                  <h3 className="text-2xl font-bold text-white leading-tight mb-2">{toro.nombre}</h3>
+                  <span className="inline-block border border-white/20 text-white/80 font-bold uppercase tracking-widest text-[10px] py-1 px-3 rounded-full">
+                    RP: {toro.rp}
+                  </span>
                 </div>
               </motion.div>
             ))}
