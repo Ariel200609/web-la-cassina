@@ -168,7 +168,7 @@ export default function Exposiciones() {
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           <Star className="w-12 h-12 text-[#C9AE71] mx-auto mb-8 opacity-80" />
           <h2 className="text-3xl md:text-5xl font-copperplate text-white uppercase mb-8 leading-tight">
-            Invertir en genética <br className="md:hidden" />reproductiva <span className="text-[#C9AE71] italic lowercase font-serif">multiplica</span>
+            Invertir en genética <br className="md:hidden" /> Productiva <span className="text-[#C9AE71] italic lowercase font-serif">multiplica</span>
           </h2>
           
           <div className="inline-block bg-white/5 border border-[#C9AE71]/30 backdrop-blur-md p-8 md:p-10 rounded-2xl shadow-2xl mt-4">

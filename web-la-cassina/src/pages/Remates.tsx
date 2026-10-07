@@ -1,3 +1,4 @@
+// src/components/sections/Remates.tsx
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -12,10 +13,10 @@ import {
   FileText
 } from 'lucide-react';
 
-//layout
-import Footer from '../components/layout/Footer';
+// Layout
+import Footer from '../components/layout/Footer'; // Ajusta la ruta si es necesario ('../components/layout/Footer')
 
-//img
+// Imágenes
 import HeroRemate from '../assets/images/HeroDeRemates.webp';
 import animales from '../assets/images/programaGenetico.webp';
 
@@ -23,7 +24,6 @@ import Alfonso from '../assets/images/Alfonso.png';
 import Baqueano from '../assets/images/Baqueano.png';
 import Kundo from '../assets/images/Kundo.png';
 import Botija from '../assets/images/Botija.png';
-
 
 export default function Remates() {
   // Reseteo de scroll al entrar
@@ -52,15 +52,15 @@ export default function Remates() {
     { icon: <FileText/>, titulo: "Financiación", desc: "Tarjetas Macro Agro, Banco Provincia, Galicia" }
   ];
 
-  // TOROS PADRES ACTUALIZADOS
+  // TOROS PADRES ACTUALIZADOS (Con información real del catálogo)
   const torosDestacados = [
-    { nombre: "Alfonso", rp: "17", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Alfonso },
-    { nombre: "Baqueano", rp: "833", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Baqueano },
-    { nombre: "Kundo", rp: "1385", raza: "Angus", desc: "Apertura de sangre. Destacada estructura y un tren posterior que impresiona.", img: Kundo },
-    { nombre: "Botija", rp: "1025", raza: "Angus", desc: "Toro Padre destacado del catálogo para nuestro remate.", img: Botija }
+    { nombre: "Alfonso", rp: "17", raza: "Angus", desc: "Toro muy prolijo, de excelente estructura, buena musculatura y capacidad de engrasamiento. De tamaño moderado.", img: Alfonso },
+    { nombre: "Baqueano", rp: "833", raza: "Angus", desc: "Destacada producción caracterizada por bajo peso al nacer, mucha clase y desarrollo. Extrema facilidad de parto.", img: Baqueano },
+    { nombre: "Kundo", rp: "1281", raza: "Angus", desc: "Moderado, profundo, de engrosamiento y masas musculares destacadas con un fenotipo muy atractivo.", img: Kundo },
+    { nombre: "Botija", rp: "1025", raza: "Angus", desc: "De color rojo intenso, impactante tren posterior y excelente calidad seminal. Mucha facilidad de parto.", img: Botija }
   ];
 
-  // GIRA DE REMATES (Cacharí agregado al inicio de la lista)
+  // GIRA DE REMATES (Con Cacharí y Hasenkamp)
   const giraRemates = [
     { ciudad: "Cacharí", fecha: "07 de Octubre", tipo: "Remate Destacado", consignatario: "La Cassina", pdf: "/catalogos/catalogo-cachari.pdf" },
     { ciudad: "Cañuelas", fecha: "01 de Agosto", tipo: "Remate de Elite (MAG)", consignatario: "Pedro Noel Irey", pdf: "/catalogos/catalogo-canuelas.pdf" },
@@ -105,7 +105,7 @@ export default function Remates() {
         </motion.div>
       </section>
 
-      {/* EL REMATE PRINCIPAL */}
+      {/* EL REMATE PRINCIPAL (CACHARÍ) */}
       <section className="relative z-20 -mt-32 px-4 pb-24">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -140,7 +140,7 @@ export default function Remates() {
                   </div>
                   <div>
                     <p className="text-white font-bold text-lg">Cacharí, PBA</p>
-                    <p className="text-sm">Predio Ferial</p>
+                    <p className="text-sm">Predio Ferial (Transmite Clic Rural)</p>
                   </div>
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function Remates() {
       <section className="py-24 px-4 bg-[#1A1528]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-copperplate text-white uppercase">Toros padres del catálogo</h2>
+            <h2 className="text-3xl md:text-5xl font-copperplate text-white uppercase">Adelanto del Catálogo</h2>
             <div className="w-24 h-1.5 bg-[#C9AE71] mx-auto mt-6 rounded-full"></div>
             
             <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
@@ -264,7 +264,7 @@ export default function Remates() {
               <motion.a 
                 key={idx}
                 href={gira.pdf}
-                download={`Catalogo_LaCassina_${gira.ciudad}.pdf`}
+                download={`Catalogo_LaCassina_${gira.ciudad.replace(/\s+/g, '')}.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -20 }}
