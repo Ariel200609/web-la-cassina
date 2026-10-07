@@ -5,22 +5,22 @@ import { ShieldCheck, Ruler, Scale, Activity } from 'lucide-react';
 import Footer from '../layout/Footer';
 
 // Importación de imágenes dinámicas
-import Apache from '../../assets/images/Apache.png';
-import Alfonso from '../../assets/images/Alfonso.png';
-import Aparicio from '../../assets/images/Aparicio.png';
-import Bandolero from '../../assets/images/Bandolero.png';
-import Baqueano from '../../assets/images/Baqueano.png';
-import Botija from '../../assets/images/Botija.png';
-import Cacique from '../../assets/images/Cacique.png';
-import Centinela from '../../assets/images/Centinela.png';
-import Decreto from '../../assets/images/Decreto.png';
-import DoubleWide from '../../assets/images/DoubleWide.png';
-import Kundo from '../../assets/images/Kundo.png';
-import Kyoto from '../../assets/images/Kyoto.png';
-import Mayaco473 from '../../assets/images/Mayaco473.png';
-import Parana from '../../assets/images/Parana.png';
-import Pimienta from '../../assets/images/Pimienta.png';
-import Vasco from '../../assets/images/Vasco.png';
+import Apache from '../assets/images/Apache.png';
+import Alfonso from '../assets/images/Alfonso.png';
+import Aparicio from '../assets/images/Aparicio.png';
+import Bandolero from '../assets/images/Bandolero.png';
+import Baqueano from '../assets/images/Baqueano.png';
+import Botija from '../assets/images/Botija.png';
+import Cacique from '../assets/images/Cacique.png';
+import Centinela from '../assets/images/Centinela.png';
+import Decreto from '../assets/images/Decreto.png';
+import DoubleWide from '../assets/images/DoubleWide.png';
+import Kundo from '../assets/images/Kundo.png';
+import Kyoto from '../assets/images/Kyoto.png';
+import Mayaco473 from '../assets/images/Mayaco473.png';
+import Parana from '../assets/images/Parana.png';
+import Pimienta from '../assets/images/Pimienta.png';
+import Vasco from '../assets/images/Vasco.png';
 
 // Datos de los 16 toros actualizados
 const padresData = [
