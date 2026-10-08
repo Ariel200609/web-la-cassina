@@ -1,11 +1,12 @@
 // src/components/sections/Hero.tsx
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useHeroSlides } from '../../hooks/useHeroSlides';
 
-// Imágenes del Carrusel
+// Imágenes del Carrusel (fallback si Sanity está vacío)
 import toroHereford from '../../assets/images/TORO-HEREFORD.webp';
 import cabana from '../../assets/images/cabana.webp';
 import animales from '../../assets/images/animales.webp';
@@ -14,10 +15,14 @@ import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
 // Importa el flyer nuevo aquí (asegúrate de tener el archivo en la carpeta)
 import flyerCachari from '../../assets/videos/cachari.mp4';
+import entrevista from '../../assets/videos/entrevista.mp4';
 
 export default function Hero() {
-  // 1. Array de 4 Banners Rotativos con sus respectivos links internos
-  const slides = [
+  // Datos desde Sanity CMS
+  const { slides: sanitySlides, loading: sanityLoading } = useHeroSlides();
+
+  // 1. Array de 4 Banners Rotativos - Fallback estático
+  const fallbackSlides = [
     {
       id: 1,
       video: flyerCachari, 
@@ -49,15 +54,41 @@ export default function Hero() {
       subtitle: "Producimos Angus, Hereford, Brangus y Braford, en las categorías Puro de Pedigree, Puro Controlados, Registrados y Categoría C.",
       link: "/genetica",
       buttonText: "Ver Razas"
+    },
+    {
+      id: 5,
+      video: entrevista,
+      title: "Cacharí",
+      subtitle: "",
+      link: "/entrevista",
+      buttonText: "Ver Entrevista"
     }
   ];
 
+  // Usar datos de Sanity si hay, sino fallback estático
+  const slides = (!sanityLoading && sanitySlides.length > 0)
+    ? sanitySlides.map((s) => ({
+        id: s.id,
+        image: s.mediaType === 'image' ? s.image : undefined,
+        video: s.mediaType === 'video' ? s.video : undefined,
+        title: s.title,
+        subtitle: s.subtitle,
+        link: s.link || '',
+        buttonText: s.buttonText || '',
+      }))
+    : fallbackSlides;
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   
   const timeoutRef = useRef<number | null>(null);
   const dragStartX = useRef<number | null>(null);
   const dragDelta = useRef<number>(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Detectar si el slide actual es un video
+  const currentSlideIsVideo = slides.length > 0 && !!slides[currentIndex]?.video;
 
   const nextImage = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % slides.length);
@@ -67,19 +98,33 @@ export default function Hero() {
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
+  const stopAutoplay = useCallback(() => {
+    if (timeoutRef.current !== null) {
+      clearInterval(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  }, []);
+
   const startAutoplay = useCallback(() => {
-    if (timeoutRef.current !== null) clearInterval(timeoutRef.current);
+    stopAutoplay();
+    // No auto-avanzar en slides con video — el video controla cuándo avanzar
+    if (currentSlideIsVideo) return;
     timeoutRef.current = window.setInterval(() => {
       nextImage();
     }, 6000);
+  }, [nextImage, currentSlideIsVideo, stopAutoplay]);
+
+  // Cuando el video termina, avanzar al siguiente slide
+  const handleVideoEnded = useCallback(() => {
+    nextImage();
   }, [nextImage]);
 
   useEffect(() => {
     startAutoplay();
     return () => {
-      if (timeoutRef.current !== null) clearInterval(timeoutRef.current);
+      stopAutoplay();
     };
-  }, [startAutoplay, currentIndex]);
+  }, [startAutoplay, stopAutoplay, currentIndex]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -170,12 +215,16 @@ export default function Hero() {
             {/* Lógica para renderizar Video o Imagen según lo que tenga el slide actual */}
             {slides[currentIndex].video ? (
               <motion.video
+                ref={(el) => {
+                  videoRef.current = el;
+                  if (el) el.muted = isMuted;
+                }}
                 src={slides[currentIndex].video}
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                 autoPlay
-                loop
-                muted
+                muted={isMuted}
                 playsInline
+                onEnded={handleVideoEnded}
                 initial={{ scale: 1.05, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -196,7 +245,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#1D1934]/90 via-[#1D1934]/60 to-transparent pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1D1934]/60 via-transparent to-transparent pointer-events-none" />
 
-            <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-20 max-w-7xl mx-auto pt-20 pointer-events-none">
+            <div className={`absolute inset-0 flex flex-col items-start px-6 md:px-20 max-w-7xl mx-auto pointer-events-none ${currentSlideIsVideo ? 'justify-end pb-32 md:pb-40' : 'justify-center pt-20'}`}>
               <motion.h1 
                 initial="hidden" animate="visible" exit="exit" variants={textVariants}
                 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight drop-shadow-xl font-copperplate"
@@ -229,6 +278,22 @@ export default function Hero() {
 
           </motion.div>
         </AnimatePresence>
+
+        {/* BOTÓN MUTE/UNMUTE — solo en slides con video */}
+        {currentSlideIsVideo && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              const newMuted = !isMuted;
+              setIsMuted(newMuted);
+              if (videoRef.current) videoRef.current.muted = newMuted;
+            }}
+            className="absolute bottom-20 md:bottom-8 right-6 md:right-8 z-30 p-3 bg-white/10 border border-white/20 hover:bg-[#ECD798] hover:border-transparent text-white hover:text-[#1D1934] rounded-full backdrop-blur-sm transition-all shadow-lg flex items-center justify-center"
+            aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}
+          >
+            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+          </button>
+        )}
 
         {/* PUNTITOS INDICADORES */}
         <div className="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-2 z-30 md:hidden">

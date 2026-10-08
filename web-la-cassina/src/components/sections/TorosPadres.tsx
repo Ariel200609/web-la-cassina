@@ -3,27 +3,35 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Ruler, Scale, Activity } from 'lucide-react';
 import Footer from '../layout/Footer';
+import { useTorosPadres } from '../../hooks/useTorosPadres';
 
-// Importación de imágenes dinámicas
-import Apache from '../../assets/images/Apache.png';
-import Alfonso from '../../assets/images/Alfonso.png';
-import Aparicio from '../../assets/images/Aparicio.png';
-import Bandolero from '../../assets/images/bandolero.png';
-import Baqueano from '../../assets/images/Baqueano.png';
-import Botija from '../../assets/images/Botija.png';
-import Cacique from '../../assets/images/Cacique.png';
-import Centinela from '../../assets/images/Centinela.png';
-import Decreto from '../../assets/images/Decreto.png';
-import DoubleWide from '../../assets/images/DoubleWide.png';
-import Kundo from '../../assets/images/Kundo.png';
-import Kyoto from '../../assets/images/Kyoto.png';
-import Mayaco473 from '../../assets/images/Mayaco473.png';
-import Parana from '../../assets/images/Parana.png';
-import Pimienta from '../../assets/images/Pimienta.png';
-import Vasco from '../../assets/images/Vasco.png';
+// Importación de imágenes dinámicas (fallback si Sanity está vacío)
+import ApacheImg from '../../assets/images/Apache.png';
+import AlfonsoImg from '../../assets/images/Alfonso.png';
+import AparicioImg from '../../assets/images/Aparicio.png';
+import BandoleroImg from '../../assets/images/bandolero.png';
+import BaqueanoImg from '../../assets/images/Baqueano.png';
+import BotijaImg from '../../assets/images/Botija.png';
+import CaciqueImg from '../../assets/images/Cacique.png';
+import CentinelaImg from '../../assets/images/Centinela.png';
+import DecretoImg from '../../assets/images/Decreto.png';
+import DoubleWideImg from '../../assets/images/DoubleWide.png';
+import KundoImg from '../../assets/images/Kundo.png';
+import KyotoImg from '../../assets/images/Kyoto.png';
+import Mayaco473Img from '../../assets/images/Mayaco473.png';
+import ParanaImg from '../../assets/images/Parana.png';
+import PimientaImg from '../../assets/images/Pimienta.png';
+import VascoImg from '../../assets/images/Vasco.png';
 
-// Datos de los 16 toros actualizados
-const padresData = [
+// Mapeo de iconType string -> componente React
+const iconMap: Record<string, React.ReactNode> = {
+  scale: <Scale className="w-4 h-4" />,
+  ruler: <Ruler className="w-4 h-4" />,
+  activity: <Activity className="w-4 h-4" />,
+};
+
+// Datos fallback de los 16 toros (se usan si Sanity no tiene datos)
+const fallbackData = [
   {
     id: 'apache',
     raza: 'Angus Colorado',
@@ -36,7 +44,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.38 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'De pedigree muy atractivo, con líneas de sangre de alto impacto.',
-    imagen: Apache
+    imagen: ApacheImg
   },
   {
     id: 'alfonso',
@@ -50,7 +58,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.36 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Sus crías promedian 32 kilos al nacer, ideal para vaquillonas de 18 meses.',
-    imagen: Alfonso
+    imagen: AlfonsoImg
   },
   {
     id: 'aparicio',
@@ -64,7 +72,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.29 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Alternativa ideal para buscar precocidad y buen desarrollo posterior.',
-    imagen: Aparicio
+    imagen: AparicioImg
   },
   {
     id: 'bandolero',
@@ -78,7 +86,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.36 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Alternativa probada para refrescar sangres. Sin problemas de parto.',
-    imagen: Bandolero
+    imagen: BandoleroImg
   },
   {
     id: 'baqueano',
@@ -92,7 +100,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.36 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Extrema facilidad de parto, pedigree muy sólido (OCC Paxton y Conhelo).',
-    imagen: Baqueano
+    imagen: BaqueanoImg
   },
   {
     id: 'botija',
@@ -106,7 +114,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.35 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Mucha facilidad de parto y una llamativa curva de crecimiento final.',
-    imagen: Botija
+    imagen: BotijaImg
   },
   {
     id: 'cacique',
@@ -120,7 +128,7 @@ const padresData = [
       { label: 'AOB DEP', valor: '+1.0', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Moderado peso al nacer y facilidad de engorde, ideal para pastoril.',
-    imagen: Cacique
+    imagen: CaciqueImg
   },
   {
     id: 'centinela',
@@ -134,7 +142,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.35 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Combina pureza racial, engrasamiento, musculatura y crecimiento.',
-    imagen: Centinela
+    imagen: CentinelaImg
   },
   {
     id: 'decreto',
@@ -148,7 +156,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.36 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Excelentes números en bajo peso al nacer y crecimiento.',
-    imagen: Decreto
+    imagen: DecretoImg
   },
   {
     id: 'double-wide',
@@ -162,7 +170,7 @@ const padresData = [
       { label: 'FRAME', valor: '4', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Destacado en facilidad de parto y estructura. P365: 416 kg.',
-    imagen: DoubleWide
+    imagen: DoubleWideImg
   },
   {
     id: 'kundo',
@@ -176,7 +184,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.33 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Bajo peso con muy buen potencial de desarrollo.',
-    imagen: Kundo
+    imagen: KundoImg
   },
   {
     id: 'kyoto',
@@ -190,7 +198,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.30 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Facilidad de parto con buen potencial de desarrollo (apertura de sangre).',
-    imagen: Kyoto
+    imagen: KyotoImg
   },
   {
     id: 'mayaco',
@@ -204,7 +212,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.35 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Bajo peso al nacer y tamaño moderado, ideal para uniformar rodeos.',
-    imagen: Mayaco473
+    imagen: Mayaco473Img
   },
   {
     id: 'parana',
@@ -218,7 +226,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.37 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Facilidad de parto probada en vaquillonas de 15 meses y excelente fertilidad.',
-    imagen: Parana
+    imagen: ParanaImg
   },
   {
     id: 'pimienta',
@@ -232,7 +240,7 @@ const padresData = [
       { label: 'ALTURA', valor: '1.34 m', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Muy sólido genéticamente. Buen tamaño y destacadas masas musculares.',
-    imagen: Pimienta
+    imagen: PimientaImg
   },
   {
     id: 'vasco',
@@ -246,11 +254,32 @@ const padresData = [
       { label: 'P. AÑO', valor: '+20 DEP', icon: <Ruler className="w-4 h-4" /> }
     ],
     fortaleza: 'Crías precoces que se desarrollan rápidamente. Productor de bajo PN.',
-    imagen: Vasco
+    imagen: VascoImg
   }
 ];
 
 export default function TorosPadres() {
+  // Datos desde Sanity CMS
+  const { toros: sanityToros, loading: sanityLoading } = useTorosPadres();
+
+  // Usar datos de Sanity si hay, sino fallback estático
+  const padresData = (!sanityLoading && sanityToros.length > 0)
+    ? sanityToros.map((t) => ({
+        id: t.id,
+        raza: t.raza,
+        nombre: t.nombre,
+        registro: t.registro,
+        descripcion: t.descripcion,
+        stats: t.stats.map((s) => ({
+          label: s.label,
+          valor: s.valor,
+          icon: iconMap[s.iconType] || <Scale className="w-4 h-4" />,
+        })),
+        fortaleza: t.fortaleza,
+        imagen: t.imagen,
+      }))
+    : fallbackData;
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(padresData.length / itemsPerPage);
