@@ -1,13 +1,8 @@
 // src/components/sections/InstagramReels.tsx
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { PlayCircle, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
-import reels1 from '../../assets/images/reels1.webp';
-import reels2 from '../../assets/images/reels2.webp';
-import reels3 from '../../assets/images/reels3.webp';
-import reels4 from '../../assets/images/reels4.webp';
-
-// Ícono SVG de Instagram personalizado
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -17,40 +12,23 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 );
 
 export default function InstagramReels() {
-  // Estos son Reels de ejemplo por si quieren subirlos manualmente.
-  // Si usan un Widget automático (ej. Elfsight), borraríamos esta grilla e insertaríamos el widget.
-  const reelsEjemplo = [
-    {
-      id: 1,
-      imagen: reels1,
-      link: "https://instagram.com/lacassina",
-      vistas: "12.5K"
-    },
-    {
-      id: 2,
-      imagen: reels2,
-      link: "https://instagram.com/lacassina",
-      vistas: "8.2K"
-    },
-    {
-      id: 3,
-      imagen: reels3,
-      link: "https://instagram.com/lacassina",
-      vistas: "15.1K"
-    },
-    {
-      id: 4,
-      imagen: reels4,
-      link: "https://instagram.com/lacassina",
-      vistas: "10.3K"
-    }
-  ];
+  // Este useEffect inyecta el script oficial de Elfsight de forma segura para React
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://elfsightcdn.com/platform.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section id="reels" className="py-24 bg-white text-slate-900 font-archivo overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* Encabezado de la Sección */}
+        {/* Encabezado */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -87,43 +65,17 @@ export default function InstagramReels() {
           </motion.a>
         </div>
 
-        {/* GRILLA DE REELS (Si usan un widget automático como Elfsight, se reemplaza esta grilla por el código del widget) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {reelsEjemplo.map((reel, index) => (
-            <motion.a
-              key={reel.id}
-              href={reel.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative group aspect-[9/16] bg-slate-100 rounded-2xl overflow-hidden shadow-md cursor-pointer block"
-            >
-              {/* Imagen de fondo del Reel */}
-              <img 
-                src={reel.imagen} 
-                alt={`Reel La Cassina ${index + 1}`} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              
-              {/* Overlay oscuro que aparece al pasar el mouse */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1D1934]/90 via-[#1D1934]/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-              
-              {/* Ícono de Play centrado */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <PlayCircle className="w-12 h-12 text-white/80 group-hover:text-[#C9AE71] group-hover:scale-110 transition-all duration-300 drop-shadow-lg" />
-              </div>
-
-              {/* Vistas (Estilo Instagram) */}
-              <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white font-medium text-sm">
-                <PlayCircle className="w-4 h-4" />
-                {reel.vistas}
-              </div>
-            </motion.a>
-          ))}
-        </div>
+        {/* CONTENEDOR DEL WIDGET AUTOMÁTICO DE ELFSIGHT */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="w-full min-h-[400px] flex items-center justify-center"
+        >
+          {/* Aquí inyectamos el ID exacto que te dio la plataforma */}
+          <div className="elfsight-app-62efe821-9944-4481-99b6-5fdc02ddd18b" data-elfsight-app-lazy="true"></div>
+        </motion.div>
 
       </div>
     </section>
