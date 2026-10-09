@@ -60,8 +60,6 @@ export default function Hero() {
       video: entrevista,
       title: "Cacharí",
       subtitle: "",
-      link: "/entrevista",
-      buttonText: "Ver Entrevista"
     }
   ];
 
