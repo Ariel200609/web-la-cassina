@@ -3,14 +3,26 @@ import { motion } from 'framer-motion';
 import { Calendar, MapPin, Trophy, Star } from 'lucide-react';
 import Footer from '../components/layout/Footer';
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 
 import imgbanner from  "../assets/images/bannerexposicion.webp"
 
 export default function Exposiciones() {
-  // Reseteo de scroll al entrar
+  const { hash } = useLocation();
+
+  // Reseteo de scroll inteligente: si hay un # en la URL baja a esa sección, sino va arriba
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [hash]);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -66,7 +78,7 @@ export default function Exposiciones() {
 
   return (
     <main className="w-full bg-[#1A1528] font-archivo selection:bg-[#C9AE71] selection:text-[#1A1528] overflow-hidden flex flex-col min-h-screen">
-      {/* 1. SEO Tags para Exposiciones */}
+      {/* SEO Tags para Exposiciones */}
       <Helmet>
         <title>Exposiciones Angus y Hereford | La Cassina</title>
         <meta name="description" content="Agenda 2026 de exposiciones Angus y Hereford: Huinca Renancó, Gualeguaychú, Curuzú Cuatiá, Bahía Blanca y más. Participa en los eventos de La Cassina."/>
@@ -78,10 +90,10 @@ export default function Exposiciones() {
         <meta property="og:description" content="Agenda 2026 de exposiciones Angus y Hereford: Huinca Renancó, Gualeguaychú, Curuzú Cuatiá, Bahía Blanca y más."/>
         <meta property="og:image" content="/images/logo.png"/>
       </Helmet>
+
       {/* 1. HERO DE EXPOSICIONES */}
       <section className="relative h-[70vh] min-h-[500px] w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          {/* Imagen de un toro imponente, similar al Angus negro del flyer */}
           <img 
             src={imgbanner}
             alt="Toro La Cassina Exposiciones" 
@@ -161,7 +173,7 @@ export default function Exposiciones() {
       </section>
 
       {/* 3. BANNER DE CIERRE Y VENTA DIRECTA */}
-      <section className="py-24 px-4 bg-gradient-to-b from-[#1A1528] to-black border-t border-white/5 relative overflow-hidden">
+      <section id="venta-directa" className="py-24 px-4 bg-gradient-to-b from-[#1A1528] to-black border-t border-white/5 relative overflow-hidden">
         {/* Adorno de fondo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#C9AE71]/5 rounded-full blur-[100px] pointer-events-none"></div>
 

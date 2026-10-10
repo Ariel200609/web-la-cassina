@@ -6,33 +6,22 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useHeroSlides } from '../../hooks/useHeroSlides';
 
-// Imágenes del Carrusel (fallback si Sanity está vacío)
+// Imágenes del Carrusel
 import toroHereford from '../../assets/images/TORO-HEREFORD.webp';
 import cabana from '../../assets/images/cabana.webp';
 import animales from '../../assets/images/animales.webp';
 import bannerRemate from '../../assets/images/bannerRemate.webp';
 import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
-// Importa el flyer nuevo aquí (asegúrate de tener el archivo en la carpeta)
 import flyerCachari from '../../assets/videos/cachari.mp4';
 import entrevista from '../../assets/videos/entrevista.mp4';
 
 export default function Hero() {
-  // Datos desde Sanity CMS
   const { slides: sanitySlides, loading: sanityLoading } = useHeroSlides();
 
-  // 1. Array de 4 Banners Rotativos - Fallback estático
   const fallbackSlides = [
     {
       id: 1,
-      video: flyerCachari, 
-      title: "PRÓXIMO REMATE",
-      subtitle: "Acompañanos en nuestro próximo remate en Cacharí. Conocé las condiciones y la oferta genética.",
-      link: "/remates",
-      buttonText: "Ver Remate"
-    },
-    {
-      id: 2,
       image: animales,
       title: "CALIDAD GENÉTICA",
       subtitle: "25 años de progreso genético continuo, maximizando el rendimiento productivo, sobre información precisa y confiable.",
@@ -40,7 +29,7 @@ export default function Hero() {
       buttonText: "Programa Genético"
     },
     {
-      id: 3,
+      id: 2,
       image: cabana,
       title: "ESTANCIAS Y CABAÑA LA CASSINA",
       subtitle: "Más de ocho mil hectáreas de producción agrícola, basada en las mejores prácticas para cuidar el suelo, y ganadera de altísima calidad, cuya piedra angular es nuestro programa genético.",
@@ -48,7 +37,7 @@ export default function Hero() {
       buttonText: "El Establecimiento"
     },
     {
-      id: 4,
+      id: 3,
       image: toroHereford,
       title: "CUATRO RAZAS",
       subtitle: "Producimos Angus, Hereford, Brangus y Braford, en las categorías Puro de Pedigree, Puro Controlados, Registrados y Categoría C.",
@@ -56,14 +45,13 @@ export default function Hero() {
       buttonText: "Ver Razas"
     },
     {
-      id: 5,
+      id: 4,
       video: entrevista,
       title: "Cacharí",
       subtitle: "",
     }
   ];
 
-  // Usar datos de Sanity si hay, sino fallback estático
   const slides = (!sanityLoading && sanitySlides.length > 0)
     ? sanitySlides.map((s) => ({
         id: s.id,
@@ -85,7 +73,6 @@ export default function Hero() {
   const dragDelta = useRef<number>(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Detectar si el slide actual es un video
   const currentSlideIsVideo = slides.length > 0 && !!slides[currentIndex]?.video;
 
   const nextImage = useCallback(() => {
@@ -105,14 +92,12 @@ export default function Hero() {
 
   const startAutoplay = useCallback(() => {
     stopAutoplay();
-    // No auto-avanzar en slides con video — el video controla cuándo avanzar
     if (currentSlideIsVideo) return;
     timeoutRef.current = window.setInterval(() => {
       nextImage();
     }, 6000);
   }, [nextImage, currentSlideIsVideo, stopAutoplay]);
 
-  // Cuando el video termina, avanzar al siguiente slide
   const handleVideoEnded = useCallback(() => {
     nextImage();
   }, [nextImage]);
@@ -210,7 +195,6 @@ export default function Hero() {
         <AnimatePresence mode="wait">
           <motion.div key={currentIndex} className="absolute inset-0">
             
-            {/* Lógica para renderizar Video o Imagen según lo que tenga el slide actual */}
             {slides[currentIndex].video ? (
               <motion.video
                 ref={(el) => {
@@ -258,7 +242,6 @@ export default function Hero() {
                 {slides[currentIndex].subtitle}
               </motion.p>
 
-              {/* Botón de enlace hacia las páginas internas */}
               {slides[currentIndex].link && (
                 <motion.div 
                   initial="hidden" animate="visible" exit="exit" variants={textVariants}
@@ -277,7 +260,6 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* BOTÓN MUTE/UNMUTE — solo en slides con video */}
         {currentSlideIsVideo && (
           <button
             onClick={(e) => {
@@ -293,7 +275,6 @@ export default function Hero() {
           </button>
         )}
 
-        {/* PUNTITOS INDICADORES */}
         <div className="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-2 z-30 md:hidden">
           {slides.map((_, idx) => (
             <button
@@ -306,7 +287,6 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* FLECHAS DE NAVEGACIÓN */}
         <div className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-30">
           <button 
             onClick={(e) => { e.stopPropagation(); prevImage(); }} 
@@ -325,7 +305,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* FRANJA DORADA CURVA SEPARADORA */}
       <div className="relative z-30 w-full h-8 md:h-12 -mt-8 md:-mt-12 pointer-events-none drop-shadow-[0_-5px_10px_rgba(0,0,0,0.5)]">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
           <defs>
@@ -342,7 +321,7 @@ export default function Hero() {
 
       {/* BANNERS DE ACCESO INFERIORES */}
       <div className="w-full bg-[#1D1934] relative z-20 flex-shrink-0">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4">
           
           <Link to="/genetica" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
             <img src={animales2} alt="Programa Genético" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
@@ -370,7 +349,7 @@ export default function Hero() {
             </div>
           </Link>
 
-          <Link to="/exposiciones" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group">
+          <Link to="/exposiciones" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
             <img src={bannerExpo} alt="Exposiciones 2026" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
             <div className="absolute inset-0 bg-[#1D1934]/80 group-hover:bg-[#1D1934]/40 transition-colors duration-500"></div>
             <div className="relative z-10 flex flex-col items-center px-4">
@@ -383,9 +362,22 @@ export default function Hero() {
             </div>
           </Link>
 
+          {/* NUEVO BOTÓN: VENTA DIRECTA */}
+          <Link to="/exposiciones#venta-directa" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group">
+            <img src={toroHereford} alt="Venta Directa" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
+            <div className="absolute inset-0 bg-[#1D1934]/80 group-hover:bg-[#1D1934]/40 transition-colors duration-500"></div>
+            <div className="relative z-10 flex flex-col items-center px-4">
+              <h3 className="text-sm md:text-lg font-bold uppercase tracking-widest text-white font-copperplate text-center drop-shadow-md">
+                Venta Directa
+              </h3>
+              <span className="mt-2 text-[#ECD798] text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                Ir a Venta Directa +
+              </span>
+            </div>
+          </Link>
+
         </div>
       </div>
-
     </section>
   );
 }
