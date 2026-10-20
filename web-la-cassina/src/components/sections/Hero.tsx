@@ -46,8 +46,8 @@ export default function Hero() {
     },
     {
       id: 4,
-      video: entrevista,
-      title: "Cacharí",
+      video: videoRemates,
+      title: "Remates",
       subtitle: "",
     }
   ];
