@@ -14,6 +14,7 @@ import bannerRemate from '../../assets/images/bannerRemate.webp';
 import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
 import entrevista from '../../assets/videos/entrevista.mp4';
+import videoRemates from '../../assets/videos/remates-2026.mp4';
 
 export default function Hero() {
   const { slides: sanitySlides, loading: sanityLoading } = useHeroSlides();
@@ -336,7 +337,17 @@ export default function Hero() {
           </Link>
 
           <Link to="/remates" className="relative flex items-center justify-center h-24 md:h-32 overflow-hidden group border-b md:border-b-0 md:border-r border-white/10">
-            <img src={bannerRemate} alt="Remates 2026" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%]" />
+            <video
+              src={videoRemates}
+              poster={bannerRemate}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Remates 2026"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%] pointer-events-none"
+            />
             <div className="absolute inset-0 bg-[#1D1934]/80 group-hover:bg-[#1D1934]/40 transition-colors duration-500"></div>
             <div className="relative z-10 flex flex-col items-center px-4">
               <h3 className="text-sm md:text-lg font-bold uppercase tracking-widest text-white font-copperplate text-center drop-shadow-md">
