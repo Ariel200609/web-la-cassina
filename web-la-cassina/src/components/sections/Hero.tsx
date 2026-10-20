@@ -13,7 +13,6 @@ import animales from '../../assets/images/animales.webp';
 import bannerRemate from '../../assets/images/bannerRemate.webp';
 import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
-import entrevista from '../../assets/videos/entrevista.mp4';
 import videoRemates from '../../assets/videos/remates-2026.mp4';
 
 export default function Hero() {
