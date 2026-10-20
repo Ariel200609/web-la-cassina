@@ -15,6 +15,10 @@ import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
 import videoRemates from '../../assets/videos/remates-2026.mp4';
 
+// Tiempos (en segundos) en que aparece y desaparece el título sobre los slides de video
+const VIDEO_TITLE_SHOW_AT = 5;
+const VIDEO_TITLE_HIDE_AT = 10;
+
 export default function Hero() {
   const { slides: sanitySlides, loading: sanityLoading } = useHeroSlides();
 
@@ -66,6 +70,7 @@ export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [showVideoTitle, setShowVideoTitle] = useState(false);
   
   const timeoutRef = useRef<number | null>(null);
   const dragStartX = useRef<number | null>(null);
@@ -100,6 +105,16 @@ export default function Hero() {
   const handleVideoEnded = useCallback(() => {
     nextImage();
   }, [nextImage]);
+
+  const handleVideoTimeUpdate = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const t = e.currentTarget.currentTime;
+    setShowVideoTitle(t >= VIDEO_TITLE_SHOW_AT && t < VIDEO_TITLE_HIDE_AT);
+  }, []);
+
+  // Al cambiar de slide, el título del video arranca oculto
+  useEffect(() => {
+    setShowVideoTitle(false);
+  }, [currentIndex]);
 
   useEffect(() => {
     startAutoplay();
@@ -206,6 +221,7 @@ export default function Hero() {
                 muted={isMuted}
                 playsInline
                 onEnded={handleVideoEnded}
+                onTimeUpdate={handleVideoTimeUpdate}
                 initial={{ scale: 1.05, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -223,23 +239,45 @@ export default function Hero() {
               />
             )}
             
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1D1934]/90 via-[#1D1934]/60 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1D1934]/60 via-transparent to-transparent pointer-events-none" />
+            {/* Filtro azul: solo en slides de imagen (en los videos se ve el video limpio) */}
+            {!currentSlideIsVideo && (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1D1934]/90 via-[#1D1934]/60 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#1D1934]/60 via-transparent to-transparent pointer-events-none" />
+              </>
+            )}
 
             <div className={`absolute inset-0 flex flex-col items-start px-6 md:px-20 max-w-7xl mx-auto pointer-events-none ${currentSlideIsVideo ? 'justify-end pb-32 md:pb-40' : 'justify-center pt-20'}`}>
-              <motion.h1 
-                initial="hidden" animate="visible" exit="exit" variants={textVariants}
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight drop-shadow-xl font-copperplate"
-              >
-                {slides[currentIndex].title}
-              </motion.h1>
+              {currentSlideIsVideo ? (
+                <AnimatePresence>
+                  {showVideoTitle && (
+                    <motion.h1 
+                      key="video-title"
+                      initial="hidden" animate="visible" exit="exit" variants={textVariants}
+                      className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight drop-shadow-xl font-copperplate"
+                      style={{ textShadow: '0 2px 12px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.5)' }}
+                    >
+                      {slides[currentIndex].title}
+                    </motion.h1>
+                  )}
+                </AnimatePresence>
+              ) : (
+                <motion.h1 
+                  initial="hidden" animate="visible" exit="exit" variants={textVariants}
+                  className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight drop-shadow-xl font-copperplate"
+                >
+                  {slides[currentIndex].title}
+                </motion.h1>
+              )}
               
-              <motion.p 
-                initial="hidden" animate="visible" exit="exit" variants={textVariants}
-                className="mt-4 md:mt-6 text-lg md:text-2xl text-gray-200 max-w-xl drop-shadow-md border-l-4 border-[#ECD798] pl-4 font-light"
-              >
-                {slides[currentIndex].subtitle}
-              </motion.p>
+              {(!currentSlideIsVideo || slides[currentIndex].subtitle) && (
+                <motion.p 
+                  initial="hidden" animate="visible" exit="exit" variants={textVariants}
+                  className="mt-4 md:mt-6 text-lg md:text-2xl text-gray-200 max-w-xl drop-shadow-md border-l-4 border-[#ECD798] pl-4 font-light"
+                >
+                  {slides[currentIndex].subtitle}
+                </motion.p>
+              )}
 
               {slides[currentIndex].link && (
                 <motion.div 
