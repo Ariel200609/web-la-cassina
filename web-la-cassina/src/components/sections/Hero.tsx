@@ -13,7 +13,7 @@ import animales from '../../assets/images/animales.webp';
 import bannerRemate from '../../assets/images/bannerRemate.webp';
 import bannerExpo from '../../assets/images/bannerExpo.webp';
 import animales2 from '../../assets/images/animales.webp';
-import videoRemates from '../../assets/videos/Remates 2026.mp4';
+import videoRemates from '../../assets/videos/Remates.mp4';
 
 // Tiempos (en segundos) en que aparece y desaparece el título sobre los slides de video
 const VIDEO_TITLE_SHOW_AT = 5;
