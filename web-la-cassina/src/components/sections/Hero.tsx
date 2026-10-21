@@ -27,7 +27,7 @@ export default function Hero() {
       id: 1,
       image: animales,
       title: "CALIDAD GENÉTICA",
-      subtitle: "25 años de progreso genético continuo, maximizando el rendimiento productivo, sobre información precisa y confiable.",
+      subtitle: "25 años de progreso genético continuo, Maximizando el rendimiento productivo, sobre información precisa y confiable.",
       link: "/genetica",
       buttonText: "Programa Genético"
     },
